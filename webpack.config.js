@@ -22,6 +22,7 @@ module.exports = {
     },
     port: 8080,
     proxy: {
+      '/networks': 'http://localhost:3000/',
       '/api': 'http://localhost:3000/',
     },
   },

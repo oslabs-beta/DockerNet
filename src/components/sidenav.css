@@ -1,0 +1,6 @@
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  border: 1px solid red;
+}
