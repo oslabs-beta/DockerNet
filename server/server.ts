@@ -15,7 +15,6 @@ const PORT = 3000;
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
 app.get('/', (req: Request, res: Response) => {
-  console.log('pinged server');
   res.status(200).sendFile(path.join(__dirname, '../build/index.html'));
 });
 
@@ -26,6 +25,7 @@ app.use('/api/networks', networksRouter);
 app.use('/api/containers', containersRouter);
 
 app.get('*', (req: Request, res: Response) => {
+  console.log('pinged *');
   res.status(200).sendFile(path.join(__dirname, '../build/index.html'));
 });
 
