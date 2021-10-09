@@ -3,11 +3,10 @@ import containersController from '../controllers/containersController';
 const router = express.Router();
 
 router.get(
-  '/',
-  containersController.getContainers,
+  '/by-network',
+  containersController.getContainersByNetwork,
   containersController.formatContainers,
   (req: Request, res: Response) => {
-    console.log('pinged controllers router');
     res.status(200).json(res.locals.containers);
   }
 );

@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { formatDockerJSON } from '../helpers/formatDockerJSON';
 
 import util from 'util';
 
@@ -9,12 +8,11 @@ import * as child_process from 'child_process';
 const exec = util.promisify(child_process.exec);
 
 const containersController = (() => {
-  const getContainers = async (
+  const getContainersByNetwork = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
-    // '/?networkName=blahBlah&jimmy=sajnk'
     const { networkName } = req.query;
     const { stdout, stderr } = await exec(
       `docker network inspect ${networkName}`
@@ -68,7 +66,7 @@ const containersController = (() => {
   };
 
   return {
-    getContainers,
+    getContainersByNetwork,
     formatContainers,
   };
 })();
