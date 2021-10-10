@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express';
 import containersController from '../controllers/containersController';
 const router = express.Router();
-
+// return array of containers associated with
+// network name provided in query parameter
 router.get(
   '/by-network',
   containersController.getContainersByNetwork,

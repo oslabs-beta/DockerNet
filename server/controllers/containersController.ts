@@ -8,11 +8,13 @@ import * as child_process from 'child_process';
 const exec = util.promisify(child_process.exec);
 
 const containersController = (() => {
+  // function for retrieving containers connected to a particular network
   const getContainersByNetwork = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
+    // network name sent from frontend as query parameter
     const { networkName } = req.query;
     const { stdout, stderr } = await exec(
       `docker network inspect ${networkName}`

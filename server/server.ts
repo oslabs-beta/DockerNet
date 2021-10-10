@@ -24,6 +24,8 @@ app.use('/api/networks', networksRouter);
 // all traffic to /api/containers
 app.use('/api/containers', containersRouter);
 
+// wildcard route always returns html
+// so that client side react routes don't 404
 app.get('*', (req: Request, res: Response) => {
   console.log('pinged *');
   res.status(200).sendFile(path.join(__dirname, '../build/index.html'));
