@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+//array of network objects
 interface IProps {
   networks: {
     driver: string;
@@ -8,6 +8,7 @@ interface IProps {
   }[];
 }
 
+// array of container objects
 interface IState {
   containers: {
     id: string;
@@ -18,16 +19,17 @@ interface IState {
 
 export const MainDisplay: React.FC<IProps> = ({ networks }) => {
   const [containers, setContainers] = useState<IState['containers']>([]);
+  // Grab the name of the current network from URL parameters
   const { networkName } = useParams<{ networkName: string | undefined }>();
-
+  // Grab the network object associated with that network name
   const network = networks.find((network) => network.name === networkName);
-
+  // fetch to backend to retrieve array of container objects
   const getContainersByNetwork = (networkName: string) => {
     fetch(`/api/containers/by-network/?networkName=${networkName}`)
       .then((res) => res.json())
       .then((containers) => setContainers(containers));
   };
-
+  // whenever the route changes, request fresh containers
   useEffect(() => {
     if (networkName === undefined) return;
     getContainersByNetwork(networkName);

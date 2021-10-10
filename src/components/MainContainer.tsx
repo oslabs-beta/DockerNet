@@ -4,6 +4,7 @@ import IMAGE from '../dog.png';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
 
+// array of network objects
 interface IState {
   networks: {
     driver: string;
@@ -28,6 +29,7 @@ export const MainContainer = () => {
   //     .then((containers) => console.log(containers));
   // };
 
+  // get new networks on mount
   useEffect(() => {
     getNetworks();
   }, []);
@@ -38,6 +40,7 @@ export const MainContainer = () => {
       <h1 className="test">Fullstack React Typescript</h1>
       <img src={IMAGE} alt="dog" />
       <SideNav networks={networks} />
+      {/* URL param variable set to networkName */}
       <Route exact path="/networks/:networkName">
         <MainDisplay networks={networks} />
       </Route>
