@@ -13,6 +13,7 @@ const networksController = (() => {
     res: Response,
     next: NextFunction
   ) => {
+    // format response from CLI to include only driver and name of network
     const { stdout, stderr } = await exec(
       `docker network ls --format '{"driver": "{{ .Driver }}", "name": "{{ .Name }}"}'`
     );
@@ -23,7 +24,7 @@ const networksController = (() => {
         message: stderr,
       });
     }
-
+    // format the incomplete JSON returned from Docker
     res.locals.networks = formatDockerJSON(stdout);
     return next();
   };
