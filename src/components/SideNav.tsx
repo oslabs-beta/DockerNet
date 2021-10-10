@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './sidenav.css';
 
+// array of network objects
 interface IProps {
   networks: {
     driver: string;
@@ -9,6 +10,8 @@ interface IProps {
 }
 
 export const SideNav: React.FC<IProps> = ({ networks }) => {
+  // create link components based on networks, each navigating the user to
+  // a URL where the param is the name of the network
   const networkLinks = networks.map((network, index) => {
     return (
       <Link key={index} to={`/networks/${network.name}`}>
