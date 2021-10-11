@@ -29,7 +29,7 @@ position in first column on left-most side of page
 begins after header row
 */
 .side-nav {
-  visibility: hidden;
+  /* visibility: hidden; */
   display: none;
   grid-column: 1;
   display: flex;
@@ -42,8 +42,19 @@ begins after header row
 container holding network information
 starts from row 2, column 2 and fills remaining space
 */
+.dafault-display {
+  grid-column: 2 / 4;
+  grid-row:  2;
+  border: 1px solid darkblue;
+}
+
+/* 
+container holding network information
+starts from row 2, column 2 and fills remaining space
+*/
 .main-display {
   grid-column: 2 / 4;
   grid-row:  2;
   border: 1px solid darkblue;
 }
+

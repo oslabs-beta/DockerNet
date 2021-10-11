@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
 import '../app.css';
+import { DefaultDisplay } from './DefaultDisplay';
 
 // array of network objects
 interface IState {
@@ -40,9 +41,14 @@ export const MainContainer = () => {
       <h1 className="header">Fullstack React Typescript</h1>
       <SideNav networks={networks} />
       {/* URL param variable set to networkName */}
-      <Route exact path="/networks/:networkName">
-        <MainDisplay networks={networks} />
-      </Route>
+      <Switch>
+        <Route exact path="/networks/:networkName">
+          <MainDisplay networks={networks} />
+        </Route>
+        <Route exact path="/">
+          <DefaultDisplay></DefaultDisplay>
+        </Route>
+      </Switch>
     </div>
   );
 };
