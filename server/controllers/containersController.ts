@@ -7,13 +7,15 @@ import { formatDockerJSON } from '../helpers/formatDockerJSON';
 
 // make the terminal commands return normal thenable promises
 const exec = util.promisify(child_process.exec);
-
+// JS module pattern:
 const containersController = (() => {
   const getRunningContainers = async (
     req: Request,
     res: Response,
     next: NextFunction
   ) => {
+    // get all running containers and return the info as a list
+    // of objects with ports, name, and id of the container
     const { stdout, stderr } = await exec(
       `docker ps --format '{"ports": "{{ .Ports}}", "name": "{{ .Names }}", "id": "{{ .ID }}"}'`
     );
@@ -35,9 +37,7 @@ const containersController = (() => {
     res: Response,
     next: NextFunction
   ) => {
-    // network name sent from frontend as query parameter
-
-    // check if network name is coming from res.locals or from a direct request
+    // check if network name is coming from res.locals or from a request from frontend
     const { networkName } = res.locals.networkName ? res.locals : req.query;
     const { stdout, stderr } = await exec(
       `docker network inspect ${networkName}`
@@ -69,6 +69,9 @@ const containersController = (() => {
   ) => {
     const { networkName, containerName } = req.body;
 
+    // connect container, only checking for error
+    // because default stdout from docker is not
+    // important for our purposes here
     const { stderr } = await exec(
       `docker network connect ${networkName} ${containerName}`
     );
@@ -92,6 +95,8 @@ const containersController = (() => {
   ) => {
     const { networkName, containerName } = req.body;
 
+    // disconnect container, only checking error
+    // as what's returned from docker here is not important
     const { stderr } = await exec(
       `docker network disconnect ${networkName} ${containerName}`
     );
@@ -119,8 +124,13 @@ const containersController = (() => {
         message: 'No raw containers on res.locals.rawContainers',
       });
 
+    // raw containers is an object
+    // keys represent container ids
+    // values are objects with container info
     const rawContainers = res.locals.rawContainers;
 
+    // map over the ids to create an array of container objects
+    // container objects have properties id, name, ipAddress
     const containers = Object.keys(rawContainers).map((containerId) => {
       return {
         id: containerId,

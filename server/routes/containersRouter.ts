@@ -1,9 +1,9 @@
 import express, { Request, Response } from 'express';
 import containersController from '../controllers/containersController';
 const router = express.Router();
-// return array of containers associated with
-// network name provided in query parameter
 
+// get all running containers
+// return array of container objects
 router.get(
   '/',
   containersController.getRunningContainers,
@@ -12,6 +12,8 @@ router.get(
   }
 );
 
+// return array of containers associated with
+// network name provided in query parameter
 router.get(
   '/by-network',
   containersController.getContainersByNetwork,
@@ -21,6 +23,9 @@ router.get(
   }
 );
 
+// disconnect container from network
+// return new array of containers connected
+// to that particular network
 router.delete(
   '/',
   containersController.disconnectContainer,
@@ -32,6 +37,9 @@ router.delete(
   }
 );
 
+// connect container to network
+// return fresh array of containers
+// connected to that network
 router.put(
   '/',
   containersController.connectContainer,
