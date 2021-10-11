@@ -15,7 +15,10 @@ const containersController = (() => {
     next: NextFunction
   ) => {
     // network name sent from frontend as query parameter
-    const { networkName } = req.query;
+
+    // comst { networkName } = res.locals.networkName ? res.locals : req.query
+    const { networkName } = res.locals.networkName ? res.locals : req.query;
+    console.log('network name from getContainersBynetwork', networkName);
     const { stdout, stderr } = await exec(
       `docker network inspect ${networkName}`
     );
@@ -56,6 +59,8 @@ const containersController = (() => {
         message: stderr,
       });
     }
+
+    res.locals.networkName = networkName;
 
     return next();
   };

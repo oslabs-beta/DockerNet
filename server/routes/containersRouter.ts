@@ -15,9 +15,11 @@ router.get(
 router.delete(
   '/',
   containersController.disconnectContainer,
+  containersController.getContainersByNetwork,
+  containersController.formatContainers,
   (req: Request, res: Response) => {
     console.log('hello from delete to continaers');
-    res.status(200).json('delete to containers');
+    res.status(200).json(res.locals.containers);
   }
 );
 
