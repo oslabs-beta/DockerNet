@@ -47,7 +47,7 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
   });
 
   return (
-    <div>
+    <div className="main-display">
       {network ? network.driver : 'hello'}
       {containerList}
     </div>

@@ -1,5 +1,33 @@
-.test {
-  color: blue;
+html { background-color: lightgray;}
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  grid-template-rows: minmax(100px, auto);
+  grid-template-areas: "header header header header";
+}
+
+.header {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  border: 1px solid darkblue;
+  flex-direction: row;
+}
+
+.side-nav {
+  /* visibility: hidden; */
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  border: 1px solid darkblue;
+}
+
+.main-display {
+  grid-column: 2 / 4;
+  grid-row:  2;
+  border: 1px solid darkblue;
 }
 
 .links {

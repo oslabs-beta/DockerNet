@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './sidenav.css';
+import '../app.css';
 
 // array of network objects
 interface IProps {
