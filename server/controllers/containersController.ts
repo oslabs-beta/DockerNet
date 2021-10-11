@@ -3,11 +3,32 @@ import { Request, Response, NextFunction } from 'express';
 import util from 'util';
 
 import * as child_process from 'child_process';
+import { formatDockerJSON } from '../helpers/formatDockerJSON';
 
 // make the terminal commands return normal thenable promises
 const exec = util.promisify(child_process.exec);
 
 const containersController = (() => {
+  const getRunningContainers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { stdout, stderr } = await exec(
+      `docker ps --format '{"ports": "{{ .Ports}}", "name": "{{ .Names }}", "id": "{{ .ID }}"}'`
+    );
+
+    if (stderr) {
+      return next({
+        log: 'Error in get running containers middleware',
+        message: stderr,
+      });
+    }
+
+    res.locals.containers = formatDockerJSON(stdout);
+    return next();
+  };
+
   // function for retrieving containers connected to a particular network
   const getContainersByNetwork = async (
     req: Request,
@@ -15,7 +36,9 @@ const containersController = (() => {
     next: NextFunction
   ) => {
     // network name sent from frontend as query parameter
-    const { networkName } = req.query;
+
+    // check if network name is coming from res.locals or from a direct request
+    const { networkName } = res.locals.networkName ? res.locals : req.query;
     const { stdout, stderr } = await exec(
       `docker network inspect ${networkName}`
     );
@@ -35,6 +58,52 @@ const containersController = (() => {
 
     // store in res.locals for reformatting
     res.locals.rawContainers = rawContainers;
+
+    return next();
+  };
+
+  const connectContainer = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { networkName, containerName } = req.body;
+
+    const { stderr } = await exec(
+      `docker network connect ${networkName} ${containerName}`
+    );
+
+    if (stderr) {
+      return next({
+        log: 'Error in connect container middleware',
+        message: stderr,
+      });
+    }
+
+    res.locals.networkName = networkName;
+
+    return next();
+  };
+
+  const disconnectContainer = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { networkName, containerName } = req.body;
+
+    const { stderr } = await exec(
+      `docker network disconnect ${networkName} ${containerName}`
+    );
+
+    if (stderr) {
+      return next({
+        log: 'Error in disconnect container middlewar',
+        message: stderr,
+      });
+    }
+
+    res.locals.networkName = networkName;
 
     return next();
   };
@@ -68,7 +137,10 @@ const containersController = (() => {
   };
 
   return {
+    getRunningContainers,
     getContainersByNetwork,
+    connectContainer,
+    disconnectContainer,
     formatContainers,
   };
 })();
