@@ -11,6 +11,7 @@ router.get(
   }
 );
 
+// create new network and return fresh array of network objects
 router.post(
   '/',
   networksController.createNetwork,
@@ -21,6 +22,7 @@ router.post(
   }
 );
 
+// remove network and return fresh array of network objects
 router.delete(
   '/',
   networksController.deleteNetwork,

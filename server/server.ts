@@ -33,7 +33,8 @@ app.get('*', (req: Request, res: Response) => {
   res.status(200).sendFile(path.join(__dirname, '../build/index.html'));
 });
 
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+// global error handler
+const errorHandler: ErrorRequestHandler = (err, req, res) => {
   const defaultErr = {
     log: 'unknown middleware error',
     status: 400,

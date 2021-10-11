@@ -6,7 +6,7 @@ import * as child_process from 'child_process';
 // make the terminal commands return normal thenable promises
 const exec = util.promisify(child_process.exec);
 
-// controller basically identical to normal controller = {} setup with controller.thing = function
+// JS Module pattern:
 const networksController = (() => {
   const getNetworks = async (
     req: Request,
@@ -34,8 +34,10 @@ const networksController = (() => {
     res: Response,
     next: NextFunction
   ) => {
+    // name of network and associated driver
     const { networkName, driver } = req.body;
-
+    // only checking for error as we don't need
+    // the id of the new network returned from docker
     const { stderr } = await exec(
       `docker network create -d ${driver} ${networkName}`
     );
@@ -55,8 +57,11 @@ const networksController = (() => {
     res: Response,
     next: NextFunction
   ) => {
+    // name of network
     const { networkName } = req.query;
 
+    // make sure that the network to remove
+    // is not one of the default networks
     if (
       networkName === 'bridge' ||
       networkName === 'host' ||
@@ -67,6 +72,8 @@ const networksController = (() => {
       });
     }
 
+    // only concerned with the error as the default
+    // return from docker CLI here is not needed
     const { stderr } = await exec(`docker network rm ${networkName}`);
 
     if (stderr) {
