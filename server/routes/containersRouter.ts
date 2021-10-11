@@ -12,4 +12,13 @@ router.get(
   }
 );
 
+router.delete(
+  '/',
+  containersController.disconnectContainer,
+  (req: Request, res: Response) => {
+    console.log('hello from delete to continaers');
+    res.status(200).json('delete to containers');
+  }
+);
+
 export default router;

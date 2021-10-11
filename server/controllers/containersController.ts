@@ -39,6 +39,27 @@ const containersController = (() => {
     return next();
   };
 
+  const disconnectContainer = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { networkName, containerName } = req.body;
+
+    const { stderr } = await exec(
+      `docker network disconnect ${networkName} ${containerName}`
+    );
+
+    if (stderr) {
+      return next({
+        log: 'Error in disconnect container middlewar',
+        message: stderr,
+      });
+    }
+
+    return next();
+  };
+
   const formatContainers = (
     req: Request,
     res: Response,
@@ -69,6 +90,7 @@ const containersController = (() => {
 
   return {
     getContainersByNetwork,
+    disconnectContainer,
     formatContainers,
   };
 })();

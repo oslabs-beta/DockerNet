@@ -29,8 +29,60 @@ const networksController = (() => {
     return next();
   };
 
+  const createNetwork = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { networkName, driver } = req.body;
+
+    const { stderr } = await exec(
+      `docker network create -d ${driver} ${networkName}`
+    );
+
+    if (stderr) {
+      return next({
+        log: 'Error in create network middleware',
+        message: stderr,
+      });
+    }
+
+    return next();
+  };
+
+  const deleteNetwork = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    const { networkName } = req.query;
+
+    if (
+      networkName === 'bridge' ||
+      networkName === 'host' ||
+      networkName === 'none'
+    ) {
+      return next({
+        log: 'Attempt to delete default docker network',
+      });
+    }
+
+    const { stderr } = await exec(`docker network rm ${networkName}`);
+
+    if (stderr) {
+      return next({
+        log: 'Error in delete network middleware',
+        message: stderr,
+      });
+    }
+
+    return next();
+  };
+
   return {
     getNetworks,
+    createNetwork,
+    deleteNetwork,
   };
 })();
 
