@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Route } from 'react-router';
-// import IMAGE from '../dog.png';
+import { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
+import '../app.css';
+import { DefaultDisplay } from './DefaultDisplay';
+import { Header } from './Header';
 
 // array of network objects
 interface IState {
@@ -34,16 +36,22 @@ export const MainContainer = () => {
     getNetworks();
   }, []);
 
-  console.log(networks);
+  // console.log(networks);
   return (
-    <div>
-      <h1 className="test">Fullstack React Typescript</h1>
-      {/* <img src={IMAGE} alt="dog" /> */}
+    <div className="main-container">
+      <Header />
       <SideNav networks={networks} />
       {/* URL param variable set to networkName */}
-      <Route exact path="/networks/:networkName">
-        <MainDisplay networks={networks} />
-      </Route>
+      <Switch>
+        {/* network specific routes */}
+        <Route exact path="/networks/:networkName">
+          <MainDisplay networks={networks} />
+        </Route>
+        {/* default route */}
+        <Route exact path="/">
+          <DefaultDisplay></DefaultDisplay>
+        </Route>
+      </Switch>
     </div>
   );
 };

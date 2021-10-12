@@ -1,9 +1,69 @@
-.test {
-  color: blue;
+/* 
+add background color to full page
+*/
+html { background-color: lightgray;}
+
+/* 
+app container with grid layout structure
+3 columns, unlimited rows, small gap between grids
+*/
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* display: flex;
+  flex-direction: column;
+  align-items: stretch; */
+  height: 100%;
+  gap: 10px;
+  
+  /* overflow: hidden; */
 }
 
-.links {
-  width: 15rem;
-  display: flex;
-  justify-content: space-between;
+/* 
+header stretches across whole page heading
+*/
+.header {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  border: 1px solid darkblue;
+  flex-direction: row;
 }
+
+/* 
+side navigation bar
+position in first column on left-most side of page
+begins after header row
+*/
+.side-nav {
+  /* visibility: hidden; */
+  display: none;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  /* height: 100px ; */
+  /* height: 100%; */
+  border: 1px solid darkblue;
+}
+
+/* 
+container holding network information
+starts from row 2, column 2 and fills remaining space
+*/
+.dafault-display {
+  grid-column: 2 / 4;
+  grid-row:  2;
+  border: 1px solid darkblue;
+  /* height: 100vw; */
+}
+
+/* 
+container holding network information
+starts from row 2, column 2 and fills remaining space
+*/
+.main-display {
+  grid-column: 2 / 4;
+  grid-row:  2;
+  border: 1px solid darkblue;
+  /* height: 100vw; */
+}
+
