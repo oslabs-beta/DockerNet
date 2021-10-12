@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { DeleteNetworkModalDisplay } from './DeleteNetworkModalDisplay';
 import '../app.css';
 
 // array of network objects
@@ -14,9 +15,13 @@ export const SideNav: React.FC<IProps> = ({ networks }) => {
   // a URL where the param is the name of the network
   const networkLinks = networks.map((network, index) => {
     return (
-      <Link key={index} to={`/networks/${network.name}`}>
-        {network.name}
-      </Link>
+      <div key={index}>
+        <Link to={`/networks/${network.name}`}>{network.name}</Link>
+        <DeleteNetworkModalDisplay
+          networks={networks}
+          networkName={network.name}
+        />
+      </div>
     );
   });
 
