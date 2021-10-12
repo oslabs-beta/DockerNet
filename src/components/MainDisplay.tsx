@@ -10,6 +10,7 @@ interface IProps {
 
 // array of container objects
 interface IState {
+  viewType: 'list' | 'graph' | 'cards';
   containers: {
     id: string;
     name: string;
@@ -18,6 +19,9 @@ interface IState {
 }
 
 export const MainDisplay: React.FC<IProps> = ({ networks }) => {
+  // Grab the current State of the Main Displau
+  const [viewType, setViewType] = useState<IState['viewType']>('list');
+
   const [containers, setContainers] = useState<IState['containers']>([]);
   // Grab the name of the current network from URL parameters
   const { networkName } = useParams<{ networkName: string | undefined }>();
@@ -48,6 +52,8 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
 
   return (
     <div className="main-display">
+      {/* <div> View Type </div>
+      <div> List | Graph | Card </div> */}
       {network ? network.driver : 'hello'}
       {containerList}
     </div>
