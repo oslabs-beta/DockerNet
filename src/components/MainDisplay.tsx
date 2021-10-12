@@ -1,6 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import './mainDisplay.scss';
+import { ListDisplay } from './ListDisplay';
+import { DataToolBar } from './DataToolBar';
+import { GraphDisplay } from './GraphDisplay';
+
 //array of network objects
 interface IProps {
   networks: {
@@ -35,29 +39,33 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
       .then((res) => res.json())
       .then((containers) => setContainers(containers));
   };
+
   // whenever the route changes, request fresh containers
   useEffect(() => {
     if (networkName === undefined) return;
     getContainersByNetwork(networkName);
   }, [networkName]);
-  // console.log(networkName);
 
-  const containerList = containers.map((container, index) => {
-    return (
-      <ul key={index}>
-        <li>{`ID: ${container.id}`}</li>
-        <li>{`Name: ${container.name}`}</li>
-        <li>{`IP Address: ${container.ipAddress}`}</li>
-      </ul>
-    );
-  });
+  // handles unkonwn network requests and redirects to homepage
+  if (network === undefined) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className="main-display">
-      {/* <div> View Type </div>
-      <div> List | Graph | Card </div> */}
-      {network ? network.driver : 'hello'}
-      {containerList}
+      <div>{networkName}</div>
+      <div>{`Driver: ${network.driver}`}</div>
+      <DataToolBar viewType={viewType} setViewType={setViewType}></DataToolBar>
+
+      {viewType == 'list' ? (
+        <ListDisplay containers={containers} network={network} setContainers={setContainers}/>
+      ) : viewType == 'graph' ? (
+        <GraphDisplay containers={containers} network={network} />
+      ) : null}
+      {/* {if (viewType === 'list') {<ListDisplay />} 
+      elseif (viewType === 'graph') { <GraphDisplay />}  */}
+      {/* elseif (viewType === 'cards') { <CardDisplay /> }} */}
     </div>
   );
+
 };

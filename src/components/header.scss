@@ -2,8 +2,14 @@
 header stretches across whole page heading
 */
 .header {
-  grid-row: 1;
-  grid-column: 1 / 4;
-  border: 1px solid darkblue;
-  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 4rem;
+  align-items: center;
+  outline: 1px solid black;
+}
+
+.header-item {
+  margin: 0 2rem;
 }
