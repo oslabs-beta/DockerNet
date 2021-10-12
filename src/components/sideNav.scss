@@ -13,3 +13,15 @@ begins after header row
   /* height: 100%; */
   border: 1px solid darkblue;
 }
+
+.networkDisplay {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid rgb(227, 227, 227);
+  height: 3vh;
+}
+
+.networkDisplay:hover {
+  background-color: rgb(238, 238, 238);
+}
