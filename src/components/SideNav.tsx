@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { DeleteNetworkModalDisplay } from './DeleteNetworkModalDisplay';
-import '../app.css';
+import './sideNav.scss';
 
 // array of network objects
 interface IProps {
