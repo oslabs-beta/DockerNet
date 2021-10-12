@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './mainDisplay.scss';
 //array of network objects
 interface IProps {
   networks: {

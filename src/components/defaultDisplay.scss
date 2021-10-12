@@ -1,0 +1,10 @@
+/* 
+container holding network information
+starts from row 2, column 2 and fills remaining space
+*/
+.dafault-display {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  border: 1px solid darkblue;
+  /* height: 100vw; */
+}

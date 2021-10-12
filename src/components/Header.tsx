@@ -1,4 +1,4 @@
-import '../app.css';
+import './header.scss';
 
 export const Header = () => {
   // Add Header to be updated later.  Needs to include expand nav bar button

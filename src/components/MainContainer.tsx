@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
-import '../app.css';
+import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
 

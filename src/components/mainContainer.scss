@@ -1,0 +1,15 @@
+/* 
+app container with grid layout structure
+3 columns, unlimited rows, small gap between grids
+*/
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* display: flex;
+  flex-direction: column;
+  align-items: stretch; */
+  height: 100%;
+  gap: 10px;
+
+  /* overflow: hidden; */
+}

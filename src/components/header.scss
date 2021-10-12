@@ -1,0 +1,9 @@
+/* 
+header stretches across whole page heading
+*/
+.header {
+  grid-row: 1;
+  grid-column: 1 / 4;
+  border: 1px solid darkblue;
+  flex-direction: row;
+}
