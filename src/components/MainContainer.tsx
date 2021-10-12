@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router';
-import IMAGE from '../dog.png';
+// import IMAGE from '../dog.png';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
 
@@ -38,7 +38,7 @@ export const MainContainer = () => {
   return (
     <div>
       <h1 className="test">Fullstack React Typescript</h1>
-      <img src={IMAGE} alt="dog" />
+      {/* <img src={IMAGE} alt="dog" /> */}
       <SideNav networks={networks} />
       {/* URL param variable set to networkName */}
       <Route exact path="/networks/:networkName">
