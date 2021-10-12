@@ -1,3 +1,5 @@
+import ForceGraph2D from 'react-force-graph-2d';
+
 interface IProps {
   // viewType: 'list' | 'graph' | 'cards';
   containers: {
@@ -39,5 +41,16 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
 
   const graphData = createGraphData(containers, network.name);
 
-  return <div>HELLO FROM GRAPH</div>;
+  return (
+  
+  <div>
+
+    <ForceGraph2D
+        graphData={graphData}
+        nodeLabel={'id'}
+        width={500}
+        height={500}
+        nodeAutoColorBy={'type'}
+    />
+  </div>);
 };

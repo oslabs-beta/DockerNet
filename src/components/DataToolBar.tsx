@@ -18,7 +18,7 @@ export const DataToolBar: React.FC<IProps> = ({ viewType, setViewType }) => {
     <div className="viewType">
       <button className="viewToggleButton" onClick={() => setViewType('list')}>List </button>
       <button className="viewToggleButton" onClick={() => setViewType('graph')}>Graph </button>
-      <button className="viewToggleButton" onClick={() => setViewType('cards')}>Card </button>
+      {/* <button className="viewToggleButton" onClick={() => setViewType('cards')}>Card </button> */}
     </div>
   );
 };
