@@ -4,6 +4,7 @@ import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
 import '../app.css';
 import { DefaultDisplay } from './DefaultDisplay';
+import { Header } from './Header';
 
 // array of network objects
 interface IState {
@@ -38,13 +39,15 @@ export const MainContainer = () => {
   // console.log(networks);
   return (
     <div className="main-container">
-      <h1 className="header">Fullstack React Typescript</h1>
+      <Header />
       <SideNav networks={networks} />
       {/* URL param variable set to networkName */}
       <Switch>
+        {/* network specific routes */}
         <Route exact path="/networks/:networkName">
           <MainDisplay networks={networks} />
         </Route>
+        {/* default route */}
         <Route exact path="/">
           <DefaultDisplay></DefaultDisplay>
         </Route>

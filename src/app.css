@@ -10,7 +10,13 @@ app container with grid layout structure
 .main-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* display: flex;
+  flex-direction: column;
+  align-items: stretch; */
+  height: 100%;
   gap: 10px;
+  
+  /* overflow: hidden; */
 }
 
 /* 
@@ -34,7 +40,8 @@ begins after header row
   grid-column: 1;
   display: flex;
   flex-direction: column;
-  height: 10rem;
+  /* height: 100px ; */
+  /* height: 100%; */
   border: 1px solid darkblue;
 }
 
@@ -46,6 +53,7 @@ starts from row 2, column 2 and fills remaining space
   grid-column: 2 / 4;
   grid-row:  2;
   border: 1px solid darkblue;
+  /* height: 100vw; */
 }
 
 /* 
@@ -56,5 +64,6 @@ starts from row 2, column 2 and fills remaining space
   grid-column: 2 / 4;
   grid-row:  2;
   border: 1px solid darkblue;
+  /* height: 100vw; */
 }
 
