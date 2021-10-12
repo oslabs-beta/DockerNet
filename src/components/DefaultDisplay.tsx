@@ -1,4 +1,4 @@
-import '../app.css';
+import './defaultDisplay.scss';
 
 export const DefaultDisplay = () => {
   return (
