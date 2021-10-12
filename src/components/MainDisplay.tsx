@@ -7,11 +7,12 @@ interface IProps {
     driver: string;
     name: string;
   }[];
+  // setNetwork: Function;
 }
 
 // array of container objects
 interface IState {
-  viewType: 'list' | 'graph' | 'cards';
+  // viewType: 'list' | 'graph' | 'cards';
   containers: {
     id: string;
     name: string;

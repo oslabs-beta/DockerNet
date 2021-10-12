@@ -53,6 +53,7 @@ export const MainContainer = () => {
           <DefaultDisplay></DefaultDisplay>
         </Route>
       </Switch>
+      {/* Add Network Modal */}
       <AddNetworkModalDisplay networks={networks} />
     </div>
   );
