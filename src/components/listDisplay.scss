@@ -1,0 +1,11 @@
+
+
+.list-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+}
+
+.container-list-item {
+  max-width: 15rem;
+  text-overflow: wrap;
+}

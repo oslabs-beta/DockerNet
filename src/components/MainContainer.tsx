@@ -38,20 +38,22 @@ export const MainContainer = () => {
 
   // console.log(networks);
   return (
-    <div className="main-container">
+    <div>
       <Header />
-      <SideNav networks={networks} />
-      {/* URL param variable set to networkName */}
-      <Switch>
-        {/* network specific routes */}
-        <Route exact path="/networks/:networkName">
-          <MainDisplay networks={networks} />
-        </Route>
-        {/* default route */}
-        <Route exact path="/">
-          <DefaultDisplay></DefaultDisplay>
-        </Route>
-      </Switch>
+      <div className="main-container">
+        <SideNav networks={networks} />
+        {/* URL param variable set to networkName */}
+        <Switch>
+          {/* network specific routes */}
+          <Route exact path="/networks/:networkName">
+            <MainDisplay networks={networks} />
+          </Route>
+          {/* default route */}
+          <Route exact path="/">
+            <DefaultDisplay></DefaultDisplay>
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 };

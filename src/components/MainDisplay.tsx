@@ -52,10 +52,12 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
 
   return (
     <div className="main-display">
+      <div>{networkName}</div>
+      <div>{`Driver: ${network.driver}`}</div>
       <DataToolBar viewType={viewType} setViewType={setViewType}></DataToolBar>
 
       {viewType == 'list' ? (
-        <ListDisplay containers={containers} network={network} />
+        <ListDisplay containers={containers} network={network} setContainers={setContainers}/>
       ) : viewType == 'graph' ? (
         <GraphDisplay containers={containers} network={network} />
       ) : null}
@@ -65,22 +67,4 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
     </div>
   );
 
-  // const containerList = containers.map((container, index) => {
-  //   return (
-  //     <ul key={index}>
-  //       <li>{`ID: ${container.id}`}</li>
-  //       <li>{`Name: ${container.name}`}</li>
-  //       <li>{`IP Address: ${container.ipAddress}`}</li>
-  //     </ul>
-  //   );
-  // });
-
-  // return (
-  //   <div className="main-display">
-  //     {/* <div> View Type </div>
-  //     <div> List | Graph | Card </div> */}
-  //     {network ? network.driver : 'hello'}
-  //     {containerList}
-  //   </div>
-  // );
 };
