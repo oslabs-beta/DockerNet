@@ -21,7 +21,7 @@ interface IState {
 
 export const MainDisplay: React.FC<IProps> = ({ networks }) => {
   // Grab the current State of the Main Displau
-  const [viewType, setViewType] = useState<IState['viewType']>('list');
+  // const [viewType, setViewType] = useState<IState['viewType']>('list');
 
   const [containers, setContainers] = useState<IState['containers']>([]);
   // Grab the name of the current network from URL parameters

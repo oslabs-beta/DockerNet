@@ -15,7 +15,7 @@ export const SideNav: React.FC<IProps> = ({ networks }) => {
   // a URL where the param is the name of the network
   const networkLinks = networks.map((network, index) => {
     return (
-      <div key={index}>
+      <div className="networkDisplay" key={index}>
         <Link to={`/networks/${network.name}`}>{network.name}</Link>
         <DeleteNetworkModalDisplay
           networks={networks}

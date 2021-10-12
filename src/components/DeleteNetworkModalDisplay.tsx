@@ -14,7 +14,7 @@ export const DeleteNetworkModalDisplay: React.FC<IProps> = ({
   networks,
   networkName,
 }) => {
-  const numOfContainers = Object.keys({ networks }).length;
+  // const numOfContainers = Object.keys({ networks }).length;
 
   const [toggleModal, setToggleModal] = useState(false);
 
@@ -37,16 +37,19 @@ export const DeleteNetworkModalDisplay: React.FC<IProps> = ({
       <div className="deleteModalOverlay">
         <div className="deleteModalDisplay">
           <h1>
-            {`Are you sure you want to delete this network: ${networkName}? There are currently ${numOfContainers} container(s) running.`}
+            {`Are you sure you want to delete this network: ${networkName}? There are currently` +
+              /*` ${numOfContainers}`*/ ` container(s) running.`}
           </h1>
-          <button
-            onClick={() => {
-              console.log('HELLO');
-            }}
-          >
-            Yes
-          </button>
-          <button onClick={toggleDeleteNetworkModalDisplay}>No</button>
+          <div className="deleteModalButtons">
+            <button
+              onClick={() => {
+                console.log('HELLO');
+              }}
+            >
+              Yes
+            </button>
+            <button onClick={toggleDeleteNetworkModalDisplay}>No</button>
+          </div>
         </div>
       </div>
     );

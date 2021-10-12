@@ -5,6 +5,7 @@ import { SideNav } from './SideNav';
 import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
+import { AddNetworkModalDisplay } from './AddNetworkModalDisplay';
 
 // array of network objects
 interface IState {
@@ -52,6 +53,7 @@ export const MainContainer = () => {
           <DefaultDisplay></DefaultDisplay>
         </Route>
       </Switch>
+      <AddNetworkModalDisplay networks={networks} />
     </div>
   );
 };
