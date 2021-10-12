@@ -133,7 +133,7 @@ const containersController = (() => {
     // container objects have properties id, name, ipAddress
     const containers = Object.keys(rawContainers).map((containerId) => {
       return {
-        id: containerId,
+        id: containerId.slice(0, 14),
         name: rawContainers[containerId].Name,
         ipAddress: rawContainers[containerId].IPv6Address
           ? rawContainers[containerId].IPv6Address
