@@ -42,15 +42,14 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
   const graphData = createGraphData(containers, network.name);
 
   return (
-  
-  <div>
-
-    <ForceGraph2D
+    <div>
+      <ForceGraph2D
         graphData={graphData}
         nodeLabel={'id'}
         width={500}
         height={500}
         nodeAutoColorBy={'type'}
-    />
-  </div>);
+      />
+    </div>
+  );
 };

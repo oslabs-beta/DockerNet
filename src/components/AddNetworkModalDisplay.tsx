@@ -1,20 +1,14 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import { useState } from 'react';
 import './addNetworkModalDisplay.scss';
 
 interface IProps {
-  networks: {
-    driver: string;
-    name: string;
-  }[];
-  //   networkName: string;
+  setNetworks: (networks: []) => void;
 }
 
 // interface IState {}
 
-export const AddNetworkModalDisplay: React.FC<IProps> = ({
-  networks,
-  //   networkName,
-}) => {
+export const AddNetworkModalDisplay: React.FC<IProps> = ({ setNetworks }) => {
   const [toggleAddModal, setToggleAddModal] = useState(false);
 
   const [networkNameInput, setNetworkNameInput] = useState('');
@@ -23,7 +17,24 @@ export const AddNetworkModalDisplay: React.FC<IProps> = ({
 
   const toggleAddNetworkModalDisplay = () => {
     setToggleAddModal(!toggleAddModal);
-    console.log({ networks });
+    //console.log({ networks });
+  };
+
+  const addNetwork = () => {
+    // need to deal with this check for space better
+    if (!networkNameInput || networkNameInput.includes(' ') || !driverTypeInput)
+      return;
+
+    fetch('/api/networks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'Application/JSON' },
+      body: JSON.stringify({
+        networkName: networkNameInput,
+        driver: driverTypeInput,
+      }),
+    })
+      .then((res) => res.json())
+      .then((networks) => setNetworks(networks));
   };
 
   if (toggleAddModal === true) {
@@ -31,16 +42,26 @@ export const AddNetworkModalDisplay: React.FC<IProps> = ({
       <div>
         <div className="addModalDisplay">
           <h1>Add Network</h1>
-          <input type="text" placeholder="Network Name"></input>
+          <input
+            type="text"
+            value={networkNameInput}
+            placeholder="Network Name"
+            onChange={(e) => setNetworkNameInput(e.target.value)}
+          ></input>
           {/* <input type="text" placeholder="Driver Type"></input> */}
-          <select name="driverType" placeholder="Driver Type">
-            <option value="null">Select Driver Type Below</option>
+          <select
+            name="driverType"
+            placeholder="Driver Type"
+            value={driverTypeInput}
+            onChange={(e) => setDriverTypeInput(e.target.value)}
+          >
+            <option value="null">Select Driver Type</option>
             <option value="bridge">Bridge</option>
             <option value="host">Host</option>
             <option value="none">None</option>
           </select>
-          <button>Add</button>
-          <button onClick={toggleAddNetworkModalDisplay}>Go Back</button>
+          <button onClick={addNetwork}>Add</button>
+          <button onClick={toggleAddNetworkModalDisplay}>Cancel</button>
         </div>
       </div>
     );

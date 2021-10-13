@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
+import { useRef } from 'react';
 import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
-import { AddNetworkModalDisplay } from './AddNetworkModalDisplay';
+import { DeleteNetworkModal } from './DeleteNetworkModal';
 
 // array of network objects
 interface IState {
@@ -17,6 +18,9 @@ interface IState {
 
 export const MainContainer = () => {
   const [networks, setNetworks] = useState<IState['networks']>([]);
+  const [deleteNetworkModalDisplay, setDeleteNetworkModalDislay] =
+    useState<boolean>(false);
+  const [networkToDelete, setNetworkToDelete] = useState<string>('');
 
   const getNetworks = () => {
     fetch('/api/networks')
@@ -26,11 +30,13 @@ export const MainContainer = () => {
       });
   };
 
-  // const testGetContainersByNetwork = () => {
-  //   fetch('api/containers/by-network/?networkName=bridge')
-  //     .then((res) => res.json())
-  //     .then((containers) => console.log(containers));
-  // };
+  const toggleDeleteNetworkModal = () => {
+    setDeleteNetworkModalDislay(!deleteNetworkModalDisplay);
+  };
+
+  const setNetworkToBeDeleted = (networkName: string) => {
+    setNetworkToDelete(networkName);
+  };
 
   // get new networks on mount
   useEffect(() => {
@@ -42,7 +48,12 @@ export const MainContainer = () => {
     <div>
       <Header />
       <div className="main-container">
-        <SideNav networks={networks} />
+        <SideNav
+          setNetworks={setNetworks}
+          networks={networks}
+          toggleDeleteNetworkModal={toggleDeleteNetworkModal}
+          setNetworkToBeDeleted={setNetworkToBeDeleted}
+        />
         {/* URL param variable set to networkName */}
         <Switch>
           {/* network specific routes */}
@@ -54,8 +65,13 @@ export const MainContainer = () => {
             <DefaultDisplay></DefaultDisplay>
           </Route>
         </Switch>
-        {/* Add Network Modal */}
-        <AddNetworkModalDisplay networks={networks} />
+        {deleteNetworkModalDisplay ? (
+          <DeleteNetworkModal
+            toggleDeleteNetworkModal={toggleDeleteNetworkModal}
+            networkToDelete={networkToDelete}
+            setNetworks={setNetworks}
+          />
+        ) : null}
       </div>
     </div>
   );

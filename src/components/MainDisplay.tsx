@@ -16,7 +16,7 @@ interface IProps {
 
 // array of container objects
 interface IState {
-  // viewType: 'list' | 'graph' | 'cards';
+  viewType: string;
   containers: {
     id: string;
     name: string;
@@ -26,7 +26,7 @@ interface IState {
 
 export const MainDisplay: React.FC<IProps> = ({ networks }) => {
   // Grab the current State of the Main Displau
-  // const [viewType, setViewType] = useState<IState['viewType']>('list');
+  const [viewType, setViewType] = useState<IState['viewType']>('list');
 
   const [containers, setContainers] = useState<IState['containers']>([]);
   // Grab the name of the current network from URL parameters
@@ -42,6 +42,7 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
 
   // whenever the route changes, request fresh containers
   useEffect(() => {
+    setContainers([]);
     if (networkName === undefined) return;
     getContainersByNetwork(networkName);
   }, [networkName]);
@@ -58,7 +59,11 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
       <DataToolBar viewType={viewType} setViewType={setViewType}></DataToolBar>
 
       {viewType == 'list' ? (
-        <ListDisplay containers={containers} network={network} setContainers={setContainers}/>
+        <ListDisplay
+          containers={containers}
+          network={network}
+          setContainers={setContainers}
+        />
       ) : viewType == 'graph' ? (
         <GraphDisplay containers={containers} network={network} />
       ) : null}
@@ -67,5 +72,4 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
       {/* elseif (viewType === 'cards') { <CardDisplay /> }} */}
     </div>
   );
-
 };

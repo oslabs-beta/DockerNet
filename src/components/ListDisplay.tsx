@@ -11,16 +11,17 @@ interface IProps {
     driver: string;
     name: string;
   };
-  setContainers: (container: string) => void;
+  setContainers: (containers: []) => void;
 }
 
-export const ListDisplay: React.FC<IProps> = ({ containers, network, setContainers }) => {
+export const ListDisplay: React.FC<IProps> = ({
+  containers,
+  network,
+  setContainers,
+}) => {
   // Grab the current State of the Main Displau
 
-  const disconnectContainer = (
-    networkName: string,
-    containerName: string
-  ) => {
+  const disconnectContainer = (networkName: string, containerName: string) => {
     fetch('/api/containers', {
       method: 'DELETE',
       headers: { 'Content-Type': 'Application/JSON' },
@@ -41,7 +42,11 @@ export const ListDisplay: React.FC<IProps> = ({ containers, network, setContaine
         <div className="container-list-item">{`${container.name}`}</div>
         <div className="container-list-item">{`${container.id}`}</div>
         <div className="container-list-item">{`${container.ipAddress}`}</div>
-        <button onClick={() => disconnectContainer(network.name, container.name)}>Disconnect</button>
+        <button
+          onClick={() => disconnectContainer(network.name, container.name)}
+        >
+          Disconnect
+        </button>
       </>
     );
   });
