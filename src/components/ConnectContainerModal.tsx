@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import './modalDisplay.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { LoadingSpinner } from '../utils/LoadingSpinner';
 
 interface IState {
   networkContainers: {
@@ -11,7 +13,7 @@ interface IState {
 
 interface IProps {
   networkName: string | undefined;
-  toggleConnectContainerModal: (display: boolean) => void;
+  toggleConnectContainerModal: () => void;
   setContainers: (containers: []) => void;
 }
 
@@ -24,7 +26,8 @@ export const ConnectContainerModal: React.FC<IProps> = ({
   const [runningContainers, setRunningContainers] = useState<
     IState['networkContainers']
   >([]);
-  const [containerToConnect, setContainerToConnect] = useState<string>('');
+  const [containerToConnectInput, setContainerToConnectInput] =
+    useState<string>('');
 
   const getRunningContainers = () => {
     setFetching(true);
@@ -36,7 +39,10 @@ export const ConnectContainerModal: React.FC<IProps> = ({
       });
   };
 
-  const connectContainer = (networkName: string, containerName: string) => {
+  const connectContainer = (
+    networkName: string | undefined,
+    containerName: string
+  ) => {
     fetch('/api/containers', {
       method: 'PUT',
       headers: { 'Content-Type': 'Application/JSON' },
@@ -47,14 +53,51 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     })
       .then((res) => res.json())
       .then((containers) => {
+        toggleConnectContainerModal();
         setContainers(containers);
       });
   };
 
+  useEffect(() => {
+    getRunningContainers();
+  }, []);
+
+  const selectOptions = runningContainers.map((container, index) => {
+    return (
+      <option key={index} value={container.name}>
+        {container.name}
+      </option>
+    );
+  });
+
+  console.log(containerToConnectInput);
+
+  if (fetching) {
+    return (
+      <div className="deleteModalOverlay">
+        <div className="deleteModalDisplay">
+          <LoadingSpinner />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="deleteModalOverlay">
       <div className="deleteModalDisplay">
-        {networkName}
+        {`Choose a container to connect to ${networkName}`}
+        <select
+          name="containerSelect"
+          value={containerToConnectInput}
+          onChange={(e) => setContainerToConnectInput(e.target.value)}
+        >
+          <option value="">Select Container</option>
+          {selectOptions}
+        </select>
+        <button
+          onClick={() => connectContainer(networkName, containerToConnectInput)}
+        >
+          Connect Container
+        </button>
         <button onClick={toggleConnectContainerModal}>Cancel</button>
       </div>
     </div>
