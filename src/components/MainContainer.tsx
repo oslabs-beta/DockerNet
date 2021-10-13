@@ -7,6 +7,7 @@ import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
 import { DeleteNetworkModal } from './DeleteNetworkModal';
+import { ConnectContainerModal } from './ConnectContainerModal';
 
 // array of network objects
 interface IState {

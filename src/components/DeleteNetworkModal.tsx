@@ -1,14 +1,9 @@
 // import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { LoadingSpinner } from '../utils/LoadingSpinner';
-import './deleteNetworkModalDisplay.scss';
+import './modalDisplay.scss';
 
 interface IProps {
-  // networks: {
-  //   driver: string;
-  //   name: string;
-  // }[];
-  // networkName: string;
   toggleDeleteNetworkModal: () => void;
   networkToDelete: string;
   setNetworks: (networks: []) => void;
