@@ -6,6 +6,9 @@ import * as child_process from 'child_process';
 // make the terminal commands return normal thenable promises
 const exec = util.promisify(child_process.exec);
 
+// const somethingController = {}
+// somethingController.doSomethong = function
+
 // JS Module pattern:
 const networksController = (() => {
   const getNetworks = async (
