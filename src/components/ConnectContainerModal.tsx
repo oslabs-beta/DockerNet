@@ -15,12 +15,18 @@ interface IProps {
   networkName: string | undefined;
   toggleConnectContainerModal: () => void;
   setContainers: (containers: []) => void;
+  containers: {
+    id: string;
+    name: string;
+    ipAddress: string;
+  }[];
 }
 
 export const ConnectContainerModal: React.FC<IProps> = ({
   networkName,
   toggleConnectContainerModal,
   setContainers,
+  containers,
 }) => {
   const [fetching, setFetching] = useState<boolean>(false);
   const [runningContainers, setRunningContainers] = useState<
@@ -62,12 +68,15 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     getRunningContainers();
   }, []);
 
+  const currentContainerNames = containers.map((container) => container.name);
+  // filter out containers already connected to the network the user is currently viewing
   const selectOptions = runningContainers.map((container, index) => {
-    return (
-      <option key={index} value={container.name}>
-        {container.name}
-      </option>
-    );
+    if (!currentContainerNames.includes(container.name))
+      return (
+        <option key={index} value={container.name}>
+          {container.name}
+        </option>
+      );
   });
 
   console.log(containerToConnectInput);
