@@ -1,5 +1,6 @@
 // import { useRef } from 'react';
 import { useEffect, useState } from 'react';
+import { LoadingSpinner } from '../utils/LoadingSpinner';
 import './deleteNetworkModalDisplay.scss';
 
 interface IProps {
@@ -27,6 +28,7 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
   networkToDelete,
   setNetworks,
 }) => {
+  const [fetching, setFetching] = useState<boolean>(true);
   const [networkContainers, setNetworkContainers] = useState<
     IState['networkContainers']
   >([]);
@@ -36,7 +38,10 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
   const getContainersByCurrNetwork = (networkName: string) => {
     fetch(`/api/containers/by-network/?networkName=${networkName}`)
       .then((res) => res.json())
-      .then((networkContainers) => setNetworkContainers(networkContainers));
+      .then((networkContainers) => {
+        setNetworkContainers(networkContainers);
+        setFetching(false);
+      });
   };
 
   const deleteNetwork = (networkName: string) => {
@@ -57,7 +62,15 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
   const numberOfContainers = networkContainers.length;
   console.log(numberOfContainers);
 
-  if (networkContainers.length) {
+  if (fetching) {
+    return (
+      <div className="deleteModalOverlay">
+        <div className="deleteModalDisplay">
+          <LoadingSpinner />
+        </div>
+      </div>
+    );
+  } else if (networkContainers.length) {
     return (
       <div className="deleteModalOverlay">
         <div className="deleteModalDisplay">

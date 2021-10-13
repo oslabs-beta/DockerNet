@@ -4,6 +4,7 @@ import './mainDisplay.scss';
 import { ListDisplay } from './ListDisplay';
 import { DataToolBar } from './DataToolBar';
 import { GraphDisplay } from './GraphDisplay';
+import { LoadingSpinner } from '../utils/LoadingSpinner';
 
 //array of network objects
 interface IProps {
@@ -25,6 +26,8 @@ interface IState {
 }
 
 export const MainDisplay: React.FC<IProps> = ({ networks }) => {
+  const [fetching, setFetching] = useState<boolean>(true);
+
   // Grab the current State of the Main Displau
   const [viewType, setViewType] = useState<IState['viewType']>('list');
 
@@ -35,9 +38,13 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
   const network = networks.find((network) => network.name === networkName);
   // fetch to backend to retrieve array of container objects
   const getContainersByNetwork = (networkName: string) => {
+    setFetching(true);
     fetch(`/api/containers/by-network/?networkName=${networkName}`)
       .then((res) => res.json())
-      .then((containers) => setContainers(containers));
+      .then((containers) => {
+        setContainers(containers);
+        setFetching(false);
+      });
   };
 
   // whenever the route changes, request fresh containers
@@ -58,7 +65,9 @@ export const MainDisplay: React.FC<IProps> = ({ networks }) => {
       <div>{`Driver: ${network.driver}`}</div>
       <DataToolBar viewType={viewType} setViewType={setViewType}></DataToolBar>
 
-      {viewType == 'list' ? (
+      {fetching ? (
+        <LoadingSpinner />
+      ) : viewType == 'list' ? (
         <ListDisplay
           containers={containers}
           network={network}
