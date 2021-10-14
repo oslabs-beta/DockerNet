@@ -1,4 +1,28 @@
+$textColor: #f2f4f3;
+$headerColor: #8161d2;
+$backgroundColor: #0c0227;
+
 .addModalDisplay {
   display: flex;
   flex-direction: column;
+}
+
+h1 {
+  color: $textColor;
+}
+
+.addNetworkButton {
+  border: 1px solid $headerColor;
+  background-color: $headerColor;
+  padding: 5px;
+  color: $textColor;
+}
+
+button {
+  border: 1px solid $backgroundColor;
+  background-color: $backgroundColor;
+  // padding: 5px;
+  color: $textColor;
+  padding-bottom: 8px;
+  cursor: pointer;
 }

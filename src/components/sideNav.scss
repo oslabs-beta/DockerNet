@@ -1,3 +1,8 @@
+$backgroundColor: #0c0227;
+$backgroundColorHover: #19044e;
+$textColor: #f2f4f3;
+$textColorHover: #e9eceb;
+
 /* 
 side navigation bar
 position in first column on left-most side of page
@@ -9,19 +14,36 @@ begins after header row
   grid-column: 1;
   display: flex;
   flex-direction: column;
-  /* height: 100px ; */
+  // height: 92vh;
+  background-color: $backgroundColor;
   /* height: 100%; */
-  border: 1px solid darkblue;
+  // border: 1px solid darkblue;
+  width: 50vh;
+  justify-content: space-between;
 }
 
 .networkDisplay {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border: 1px solid rgb(227, 227, 227);
+  padding: 20px;
+  // border-bottom: 1px solid rgb(242, 242, 242);
   height: 3vh;
+  // width: 30vh;
+  background-color: $backgroundColor;
 }
 
 .networkDisplay:hover {
-  background-color: rgb(238, 238, 238);
+  background-color: $backgroundColorHover;
+  // border: 1px solid red;
+}
+
+.networkDisplay:hover .networkLink {
+  // background-color: rgb(238, 238, 238);
+  color: $textColorHover;
+}
+
+.networkLink {
+  // border: 1px solid red;
+  color: $textColor;
+  text-decoration: none;
 }

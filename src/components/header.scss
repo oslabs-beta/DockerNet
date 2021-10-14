@@ -1,3 +1,4 @@
+$headerColor: #8161d2;
 /* 
 header stretches across whole page heading
 */
@@ -7,9 +8,61 @@ header stretches across whole page heading
   width: 100%;
   height: 4rem;
   align-items: center;
-  outline: 1px solid black;
+  outline: 1px solid $headerColor;
+  background-color: $headerColor;
 }
 
-.header-item {
-  margin: 0 2rem;
+.header-button {
+  background: none;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
 }
+
+.menuIcon {
+  width: 35px;
+  height: 3px;
+  background-color: white;
+  margin: 6px;
+}
+
+.header-title {
+  margin-right: 2rem;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-logo {
+  height: 20px;
+  margin-right: 3px;
+}
+
+// #bar1,
+// #bar2,
+// #bar3 {
+//   width: 35px;
+//   height: 5px;
+//   background-color: #333;
+//   margin: 6px 0;
+//   transition: 0.4s;
+// }
+
+// /* Rotate first bar */
+// .change #bar1 {
+//   -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+//   transform: rotate(-45deg) translate(-9px, 6px);
+// }
+
+// /* Fade out the second bar */
+// .change #bar2 {
+//   opacity: 0;
+// }
+
+// /* Rotate last bar */
+// .change #bar3 {
+//   -webkit-transform: rotate(45deg) translate(-8px, -8px);
+//   transform: rotate(45deg) translate(-8px, -8px);
+// }

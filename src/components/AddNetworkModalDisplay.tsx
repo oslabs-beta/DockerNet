@@ -66,6 +66,13 @@ export const AddNetworkModalDisplay: React.FC<IProps> = ({ setNetworks }) => {
       </div>
     );
   } else {
-    return <button onClick={toggleAddNetworkModalDisplay}>Add Network</button>;
+    return (
+      <button
+        className="addNetworkButton"
+        onClick={toggleAddNetworkModalDisplay}
+      >
+        Add Network
+      </button>
+    );
   }
 };
