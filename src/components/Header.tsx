@@ -16,7 +16,7 @@ export const Header = () => {
           className="header-logo"
           src="https://pngimg.com/uploads/anchor/anchor_PNG11.png"
         ></img>
-        <div>Anchor</div>
+        <div>DockerNet</div>
       </div>
     </div>
   );
