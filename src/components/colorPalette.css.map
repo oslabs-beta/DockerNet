@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "colorPalette.scss"
+    ],
+    "names": [],
+    "file": "colorPalette.css"
+}

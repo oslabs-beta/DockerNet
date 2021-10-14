@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,iBAAiB;CAEzC;;AAED,AAAA,oBAAoB,CAAC;EACnB,SAAS,EAAE,KAAK;EAChB,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "listDisplay.scss"
+    ],
+    "names": [],
+    "file": "listDisplay.css"
+}

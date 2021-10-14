@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AddNetworkModalDisplay } from './AddNetworkModalDisplay';
-import { useState } from 'react';
+// import { useState } from 'react';
 import './sideNav.scss';
 
 // array of network objects
@@ -22,7 +22,7 @@ export const SideNav: React.FC<IProps> = ({
 }) => {
   // create link components based on networks, each navigating the user to
   // a URL where the param is the name of the network
-  const [sideNavOpen, setSideNavOpen] = useState<boolean>(true);
+  // const [sideNavOpen, setSideNavOpen] = useState<boolean>(true);
 
   const networkLinks = networks.map((network, index) => {
     if (
@@ -32,7 +32,9 @@ export const SideNav: React.FC<IProps> = ({
     ) {
       return (
         <div className="networkDisplay" key={index}>
-          <Link to={`/networks/${network.name}`}>{network.name}</Link>
+          <Link className="networkLink" to={`/networks/${network.name}`}>
+            {network.name}
+          </Link>
           <button
             onClick={() => {
               setNetworkToBeDeleted(network.name);
@@ -46,7 +48,9 @@ export const SideNav: React.FC<IProps> = ({
     } else {
       return (
         <div className="networkDisplay" key={index}>
-          <Link to={`/networks/${network.name}`}>{network.name}</Link>
+          <Link className="networkLink" to={`/networks/${network.name}`}>
+            {network.name}
+          </Link>
         </div>
       );
     }
@@ -54,7 +58,7 @@ export const SideNav: React.FC<IProps> = ({
 
   return (
     <div className="side-nav">
-      {networkLinks}
+      <div className="networkLinkContainer">{networkLinks}</div>
       <AddNetworkModalDisplay setNetworks={setNetworks} />
     </div>
   );
