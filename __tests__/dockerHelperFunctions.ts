@@ -21,6 +21,7 @@ describe('Format Docker JSON Unit Tests', () => {
       expect(obj).toHaveProperty('name');
       expect(obj).toHaveProperty('id');
       expect(obj).toHaveProperty('ports');
+      // hello there
     });
   });
 });
