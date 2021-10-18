@@ -1,43 +1,25 @@
-// import { useRef } from 'react';
-import { useEffect, useState } from 'react';
-import { LoadingSpinner } from '../utils/LoadingSpinner';
 import './modalDisplay.scss';
 
 interface IProps {
   toggleDeleteNetworkModal: () => void;
   networkToDelete: string;
   setNetworks: (networks: []) => void;
-}
-
-interface IState {
-  networkContainers: {
-    id: string;
+  networks: {
+    driver: string;
     name: string;
-    ipAddress: string;
+    containers: [];
   }[];
-  toggleModal: boolean;
 }
 
 export const DeleteNetworkModal: React.FC<IProps> = ({
   toggleDeleteNetworkModal,
   networkToDelete,
   setNetworks,
+  networks,
 }) => {
-  const [fetching, setFetching] = useState<boolean>(true);
-  const [networkContainers, setNetworkContainers] = useState<
-    IState['networkContainers']
-  >([]);
-
-  // const currNetwork = networks.find((network) => network.name === networkName);
-
-  const getContainersByCurrNetwork = (networkName: string) => {
-    fetch(`/api/containers/by-network/?networkName=${networkName}`)
-      .then((res) => res.json())
-      .then((networkContainers) => {
-        setNetworkContainers(networkContainers);
-        setFetching(false);
-      });
-  };
+  const currNetwork = networks.find(
+    (network) => network.name === networkToDelete
+  );
 
   const deleteNetwork = (networkName: string) => {
     fetch(`/api/networks/?networkName=${networkName}`, {
@@ -50,22 +32,9 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
       });
   };
 
-  useEffect(() => {
-    getContainersByCurrNetwork(networkToDelete);
-  }, [networkToDelete]);
+  const numberOfContainers = currNetwork?.containers.length;
 
-  const numberOfContainers = networkContainers.length;
-  console.log(numberOfContainers);
-
-  if (fetching) {
-    return (
-      <div className="deleteModalOverlay">
-        <div className="deleteModalDisplay">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
-  } else if (networkContainers.length) {
+  if (numberOfContainers) {
     return (
       <div className="deleteModalOverlay">
         <div className="deleteModalDisplay">

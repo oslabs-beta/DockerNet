@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AddNetworkModalDisplay } from './AddNetworkModalDisplay';
-// import { useState } from 'react';
+import uniqid from 'uniqid';
 import './sideNav.scss';
 
 // array of network objects
@@ -24,14 +24,14 @@ export const SideNav: React.FC<IProps> = ({
   // a URL where the param is the name of the network
   // const [sideNavOpen, setSideNavOpen] = useState<boolean>(true);
 
-  const networkLinks = networks.map((network, index) => {
+  const networkLinks = networks.map((network) => {
     if (
       network.name !== 'bridge' &&
       network.name !== 'none' &&
       network.name !== 'host'
     ) {
       return (
-        <div className="networkDisplay" key={index}>
+        <div className="networkDisplay" key={uniqid()}>
           <Link className="networkLink" to={`/networks/${network.name}`}>
             {network.name}
           </Link>
@@ -47,7 +47,7 @@ export const SideNav: React.FC<IProps> = ({
       );
     } else {
       return (
-        <div className="networkDisplay" key={index}>
+        <div className="networkDisplay" key={uniqid()}>
           <Link className="networkLink" to={`/networks/${network.name}`}>
             {network.name}
           </Link>

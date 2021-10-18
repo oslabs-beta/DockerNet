@@ -38,12 +38,13 @@ export const MainContainer = () => {
     setNetworkToDelete(networkName);
   };
 
-  // get new networks on mount
   useEffect(() => {
     getNetworks();
+    window.setInterval(() => {
+      getNetworks();
+    }, 3000);
   }, []);
 
-  // console.log(networks);
   return (
     <div>
       <Header />
@@ -58,7 +59,7 @@ export const MainContainer = () => {
         <Switch>
           {/* network specific routes */}
           <Route exact path="/networks/:networkName">
-            <MainDisplay networks={networks} />
+            <MainDisplay networks={networks} setNetworks={setNetworks} />
           </Route>
           {/* default route */}
           <Route exact path="/">
@@ -70,6 +71,7 @@ export const MainContainer = () => {
             toggleDeleteNetworkModal={toggleDeleteNetworkModal}
             networkToDelete={networkToDelete}
             setNetworks={setNetworks}
+            networks={networks}
           />
         ) : null}
       </div>

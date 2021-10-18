@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import './modalDisplay.scss';
 import { useState } from 'react';
+import uniqid from 'uniqid';
 
 interface IProps {
   networkName: string | undefined;
@@ -15,6 +16,7 @@ interface IProps {
     name: string;
     containers: [];
   }[];
+  setNetworks: (networks: []) => void;
 }
 
 export const ConnectContainerModal: React.FC<IProps> = ({
@@ -22,6 +24,7 @@ export const ConnectContainerModal: React.FC<IProps> = ({
   toggleConnectContainerModal,
   containers,
   networks,
+  setNetworks,
 }) => {
   const [containerToConnectInput, setContainerToConnectInput] =
     useState<string>('');
@@ -39,22 +42,28 @@ export const ConnectContainerModal: React.FC<IProps> = ({
       }),
     })
       .then((res) => res.json())
-      .then((containers) => {
+      .then((networks) => {
         toggleConnectContainerModal();
-        console.log(containers);
+        setNetworks(networks);
       });
   };
 
-  //const currentContainerNames = containers.map((container) => container.name);
+  const currentContainerNames = containers.map((container) => container.name);
   // filter out containers already connected to the network the user is currently viewing
+  const selectOptions = networks.reduce((acc, network) => {
+    network.containers.forEach((container: any) => {
+      if (!currentContainerNames.includes(container.name)) {
+        acc.push(
+          <option key={uniqid()} value={container.name}>
+            {container.name}{' '}
+          </option>
+        );
+      }
+    });
+    return acc;
+  }, [] as JSX.Element[]);
 
-  const selectOptions = containers.map((container, index) => {
-    return (
-      <option key={index} value={container['name']}>
-        {container['name']}{' '}
-      </option>
-    );
-  });
+  console.log(selectOptions);
 
   return (
     <div className="deleteModalOverlay">

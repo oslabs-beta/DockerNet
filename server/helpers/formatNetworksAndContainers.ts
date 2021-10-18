@@ -17,11 +17,13 @@ type RawContainers = {
 };
 
 export const formatNetworksAndContainers = (networks: network[]) => {
-  return networks.map((network) => {
-    return {
-      name: network.Name,
-      driver: network.Driver,
-      containers: formatRawContainers(network.Containers),
-    };
-  });
+  return networks
+    .map((network) => {
+      return {
+        name: network.Name,
+        driver: network.Driver,
+        containers: formatRawContainers(network.Containers),
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
 };
