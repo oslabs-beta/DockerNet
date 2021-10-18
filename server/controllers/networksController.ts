@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { formatDockerJSON } from '../helpers/formatDockerJSON';
 import util from 'util';
 import * as child_process from 'child_process';
+import { formatNetworksAndContainers } from '../helpers/formatNetworksAndContainers';
 
 // make the terminal commands return normal thenable promises
 const exec = util.promisify(child_process.exec);
@@ -11,6 +12,35 @@ const exec = util.promisify(child_process.exec);
 
 // JS Module pattern:
 const networksController = (() => {
+  const getNetworksAndContainers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    // this version of the docker API returns networks and associated containers
+    // Docker's API is backwards compatible with older versions
+    const { stdout, stderr } = await exec(
+      'curl --unix-socket /var/run/docker.sock http://localhost/v1.18/networks'
+    );
+
+    if (!stdout) {
+      return next({
+        log: 'Error in get networks and containers middleware',
+        message: stderr,
+      });
+    }
+
+    const rawNetworksAndContainers = JSON.parse(stdout);
+
+    const networksAndContainers = formatNetworksAndContainers(
+      rawNetworksAndContainers
+    );
+
+    res.locals.networksAndContainers = networksAndContainers;
+
+    return next();
+  };
+
   const getNetworks = async (
     req: Request,
     res: Response,
@@ -90,6 +120,7 @@ const networksController = (() => {
   };
 
   return {
+    getNetworksAndContainers,
     getNetworks,
     createNetwork,
     deleteNetwork,

@@ -11,14 +11,9 @@ interface IProps {
     driver: string;
     name: string;
   };
-  setContainers: (containers: []) => void;
 }
 
-export const ListDisplay: React.FC<IProps> = ({
-  containers,
-  network,
-  setContainers,
-}) => {
+export const ListDisplay: React.FC<IProps> = ({ containers, network }) => {
   // Grab the current State of the Main Displau
 
   const disconnectContainer = (networkName: string, containerName: string) => {
@@ -32,7 +27,7 @@ export const ListDisplay: React.FC<IProps> = ({
     })
       .then((res) => res.json())
       .then((containers) => {
-        setContainers(containers);
+        console.log(containers);
       });
   };
 

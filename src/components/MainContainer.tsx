@@ -2,18 +2,17 @@ import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
-import { useRef } from 'react';
 import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
 import { DeleteNetworkModal } from './DeleteNetworkModal';
-import { ConnectContainerModal } from './ConnectContainerModal';
 
 // array of network objects
 interface IState {
   networks: {
     driver: string;
     name: string;
+    containers: [];
   }[];
 }
 

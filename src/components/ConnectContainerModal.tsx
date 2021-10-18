@@ -1,49 +1,30 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import './modalDisplay.scss';
-import { useState, useEffect } from 'react';
-import { LoadingSpinner } from '../utils/LoadingSpinner';
-
-interface IState {
-  networkContainers: {
-    id: string;
-    name: string;
-    ipAddress: string;
-  }[];
-}
+import { useState } from 'react';
 
 interface IProps {
   networkName: string | undefined;
   toggleConnectContainerModal: () => void;
-  setContainers: (containers: []) => void;
   containers: {
     id: string;
     name: string;
     ipAddress: string;
+  }[];
+  networks: {
+    driver: string;
+    name: string;
+    containers: [];
   }[];
 }
 
 export const ConnectContainerModal: React.FC<IProps> = ({
   networkName,
   toggleConnectContainerModal,
-  setContainers,
   containers,
+  networks,
 }) => {
-  const [fetching, setFetching] = useState<boolean>(false);
-  const [runningContainers, setRunningContainers] = useState<
-    IState['networkContainers']
-  >([]);
   const [containerToConnectInput, setContainerToConnectInput] =
     useState<string>('');
-
-  const getRunningContainers = () => {
-    setFetching(true);
-    fetch(`/api/containers/`)
-      .then((res) => res.json())
-      .then((runningContainers) => {
-        setRunningContainers(runningContainers);
-        setFetching(false);
-      });
-  };
 
   const connectContainer = (
     networkName: string | undefined,
@@ -60,36 +41,21 @@ export const ConnectContainerModal: React.FC<IProps> = ({
       .then((res) => res.json())
       .then((containers) => {
         toggleConnectContainerModal();
-        setContainers(containers);
+        console.log(containers);
       });
   };
 
-  useEffect(() => {
-    getRunningContainers();
-  }, []);
-
-  const currentContainerNames = containers.map((container) => container.name);
+  //const currentContainerNames = containers.map((container) => container.name);
   // filter out containers already connected to the network the user is currently viewing
-  const selectOptions = runningContainers.map((container, index) => {
-    if (!currentContainerNames.includes(container.name))
-      return (
-        <option key={index} value={container.name}>
-          {container.name}
-        </option>
-      );
+
+  const selectOptions = containers.map((container, index) => {
+    return (
+      <option key={index} value={container['name']}>
+        {container['name']}{' '}
+      </option>
+    );
   });
 
-  console.log(containerToConnectInput);
-
-  if (fetching) {
-    return (
-      <div className="deleteModalOverlay">
-        <div className="deleteModalDisplay">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
-  }
   return (
     <div className="deleteModalOverlay">
       <div className="deleteModalDisplay">
@@ -112,3 +78,24 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     </div>
   );
 };
+
+// networks.reduce((acc, network) => {
+//   network.containers.forEach((container, index) => {
+//     if (!currentContainerNames.includes(container['name'])) {
+//       acc.push(
+//         <option key={index} value={container['name']}>
+//           {container['name']}
+//         </option>
+//       );
+//     }
+//   });
+// }, []);
+
+// const selectOptions = runningContainers.map((container, index) => {
+//   if (!currentContainerNames.includes(container.name))
+//     return (
+//       <option key={index} value={container.name}>
+//         {container.name}
+//       </option>
+//     );
+// });
