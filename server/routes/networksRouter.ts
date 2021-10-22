@@ -4,10 +4,9 @@ const router = express.Router();
 // return array of network objects
 router.get(
   '/',
-  networksController.getNetworks,
+  networksController.getNetworksAndContainers,
   (req: Request, res: Response) => {
-    console.log('pinged networks router');
-    res.status(200).json(res.locals.networks);
+    res.status(200).json(res.locals.networksAndContainers);
   }
 );
 
@@ -15,10 +14,9 @@ router.get(
 router.post(
   '/',
   networksController.createNetwork,
-  networksController.getNetworks,
+  networksController.getNetworksAndContainers,
   (req: Request, res: Response) => {
-    console.log('hello from network router post');
-    res.status(200).json(res.locals.networks);
+    res.status(200).json(res.locals.networksAndContainers);
   }
 );
 
@@ -26,9 +24,9 @@ router.post(
 router.delete(
   '/',
   networksController.deleteNetwork,
-  networksController.getNetworks,
+  networksController.getNetworksAndContainers,
   (req: Request, res: Response) => {
-    res.status(200).json(res.locals.networks);
+    res.status(200).json(res.locals.networksAndContainers);
   }
 );
 

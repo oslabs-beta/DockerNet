@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import containersController from '../controllers/containersController';
+import networksController from '../controllers/networksController';
 const router = express.Router();
 
 // get all running containers
@@ -29,11 +30,10 @@ router.get(
 router.delete(
   '/',
   containersController.disconnectContainer,
-  containersController.getContainersByNetwork,
-  containersController.formatContainers,
+  networksController.getNetworksAndContainers,
   (req: Request, res: Response) => {
     console.log('hello from delete to continaers');
-    res.status(200).json(res.locals.containers);
+    res.status(200).json(res.locals.networksAndContainers);
   }
 );
 
@@ -43,11 +43,9 @@ router.delete(
 router.put(
   '/',
   containersController.connectContainer,
-  containersController.getContainersByNetwork,
-  containersController.formatContainers,
+  networksController.getNetworksAndContainers,
   (req: Request, res: Response) => {
-    console.log('hello from put to containers');
-    res.status(200).json(res.locals.containers);
+    res.status(200).json(res.locals.networksAndContainers);
   }
 );
 

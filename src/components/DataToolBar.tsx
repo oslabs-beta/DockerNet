@@ -1,19 +1,17 @@
 interface IProps {
-  viewType: 'list' | 'graph' | 'cards';
   setViewType: (view: string) => void;
   containers?: {
     id: string;
     name: string;
     ipAddress: string;
   }[];
-  toggleConnectContainerModal: (display: boolean) => void;
+  toggleConnectContainerModal: () => void;
 }
 
 // contains toggle between different view modes
 // contains add/delete node to network??
 // contains network name?
 export const DataToolBar: React.FC<IProps> = ({
-  viewType,
   setViewType,
   toggleConnectContainerModal,
 }) => {

@@ -2,18 +2,17 @@ import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
-import { useRef } from 'react';
 import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
 import { DeleteNetworkModal } from './DeleteNetworkModal';
-import { ConnectContainerModal } from './ConnectContainerModal';
 
 // array of network objects
 interface IState {
   networks: {
     driver: string;
     name: string;
+    containers: [];
   }[];
 }
 
@@ -39,12 +38,13 @@ export const MainContainer = () => {
     setNetworkToDelete(networkName);
   };
 
-  // get new networks on mount
   useEffect(() => {
     getNetworks();
+    window.setInterval(() => {
+      getNetworks();
+    }, 3000);
   }, []);
 
-  // console.log(networks);
   return (
     <div>
       <Header />
@@ -59,7 +59,7 @@ export const MainContainer = () => {
         <Switch>
           {/* network specific routes */}
           <Route exact path="/networks/:networkName">
-            <MainDisplay networks={networks} />
+            <MainDisplay networks={networks} setNetworks={setNetworks} />
           </Route>
           {/* default route */}
           <Route exact path="/">
@@ -71,6 +71,7 @@ export const MainContainer = () => {
             toggleDeleteNetworkModal={toggleDeleteNetworkModal}
             networkToDelete={networkToDelete}
             setNetworks={setNetworks}
+            networks={networks}
           />
         ) : null}
       </div>
