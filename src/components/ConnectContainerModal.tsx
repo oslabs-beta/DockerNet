@@ -19,6 +19,14 @@ interface IProps {
   setNetworks: (networks: []) => void;
 }
 
+type Cache = {
+  [key: string]: boolean;
+};
+
+type Container = {
+  [key: string]: string;
+};
+
 export const ConnectContainerModal: React.FC<IProps> = ({
   networkName,
   toggleConnectContainerModal,
@@ -50,9 +58,14 @@ export const ConnectContainerModal: React.FC<IProps> = ({
 
   const currentContainerNames = containers.map((container) => container.name);
   // filter out containers already connected to the network the user is currently viewing
+  const containerCache: Cache = {};
   const selectOptions = networks.reduce((acc, network) => {
-    network.containers.forEach((container: any) => {
-      if (!currentContainerNames.includes(container.name)) {
+    network.containers.forEach((container: Container) => {
+      if (
+        !currentContainerNames.includes(container.name) &&
+        !containerCache.hasOwnProperty(container.name)
+      ) {
+        containerCache[container.name] = true;
         acc.push(
           <option key={uniqid()} value={container.name}>
             {container.name}{' '}
@@ -62,8 +75,6 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     });
     return acc;
   }, [] as JSX.Element[]);
-
-  console.log(selectOptions);
 
   return (
     <div className="deleteModalOverlay">
@@ -87,24 +98,3 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     </div>
   );
 };
-
-// networks.reduce((acc, network) => {
-//   network.containers.forEach((container, index) => {
-//     if (!currentContainerNames.includes(container['name'])) {
-//       acc.push(
-//         <option key={index} value={container['name']}>
-//           {container['name']}
-//         </option>
-//       );
-//     }
-//   });
-// }, []);
-
-// const selectOptions = runningContainers.map((container, index) => {
-//   if (!currentContainerNames.includes(container.name))
-//     return (
-//       <option key={index} value={container.name}>
-//         {container.name}
-//       </option>
-//     );
-// });
