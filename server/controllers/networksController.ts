@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { formatDockerJSON } from '../helpers/formatDockerJSON';
 import util from 'util';
 import * as child_process from 'child_process';
 import { formatNetworksAndContainers } from '../helpers/formatNetworksAndContainers';
@@ -38,27 +37,6 @@ const networksController = (() => {
 
     res.locals.networksAndContainers = networksAndContainers;
 
-    return next();
-  };
-
-  const getNetworks = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    // format response from CLI to include only driver and name of network
-    const { stdout, stderr } = await exec(
-      `docker network ls --format '{"driver": "{{ .Driver }}", "name": "{{ .Name }}"}'`
-    );
-
-    if (stderr) {
-      return next({
-        log: 'Error in get networks middleware',
-        message: stderr,
-      });
-    }
-    // format the incomplete JSON returned from Docker
-    res.locals.networks = formatDockerJSON(stdout);
     return next();
   };
 
@@ -121,7 +99,6 @@ const networksController = (() => {
 
   return {
     getNetworksAndContainers,
-    getNetworks,
     createNetwork,
     deleteNetwork,
   };
