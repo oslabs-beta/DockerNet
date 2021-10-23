@@ -27,6 +27,7 @@ export const MainContainer = () => {
   const getNetworks = () => {
     fetch('/api/networks')
       .then((res) => {
+        // Fetch API does not catch 400 status codes
         if (!res.ok) {
           throw new Error('Docker Unresponsive');
         }

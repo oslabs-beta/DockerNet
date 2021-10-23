@@ -41,6 +41,7 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     networkName: string | undefined,
     containerName: string
   ) => {
+    if (!networkName || !containerName) return;
     fetch('/api/containers', {
       method: 'PUT',
       headers: { 'Content-Type': 'Application/JSON' },
