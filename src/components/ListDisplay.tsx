@@ -1,7 +1,6 @@
 import './listDisplay.scss';
 
 interface IProps {
-  // viewType: 'list' | 'graph' | 'cards';
   containers: {
     id: string;
     name: string;
@@ -54,7 +53,7 @@ export const ListDisplay: React.FC<IProps> = ({
       <div>Name</div>
       <div>ID</div>
       <div>IP Address</div>
-      <div>Remove Container</div>
+      <div></div>
       {containerList}
     </div>
   );

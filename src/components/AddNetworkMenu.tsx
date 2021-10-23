@@ -1,14 +1,12 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import { useState } from 'react';
-import './addNetworkModalDisplay.scss';
+import './addNetworkMenu.scss';
 
 interface IProps {
   setNetworks: (networks: []) => void;
 }
 
-// interface IState {}
-
-export const AddNetworkModalDisplay: React.FC<IProps> = ({ setNetworks }) => {
+export const AddNetworkMenu: React.FC<IProps> = ({ setNetworks }) => {
   const [toggleAddModal, setToggleAddModal] = useState(false);
 
   const [networkNameInput, setNetworkNameInput] = useState('');
@@ -21,7 +19,6 @@ export const AddNetworkModalDisplay: React.FC<IProps> = ({ setNetworks }) => {
   };
 
   const addNetwork = () => {
-    // need to deal with this check for space better
     if (!networkNameInput || networkNameInput.includes(' ') || !driverTypeInput)
       return;
 
@@ -48,7 +45,6 @@ export const AddNetworkModalDisplay: React.FC<IProps> = ({ setNetworks }) => {
             placeholder="Network Name"
             onChange={(e) => setNetworkNameInput(e.target.value)}
           ></input>
-          {/* <input type="text" placeholder="Driver Type"></input> */}
           <select
             name="driverType"
             placeholder="Driver Type"
