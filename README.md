@@ -49,7 +49,7 @@
 ---
 ## About
 >### Description
->DockerNet.io provides developers with the tools needed to visualize and manage a Docker Network.  Developers will have the abaility to view their networks in both a list view and graphical view.  Developers are also able to create new networks, delete current networks, add containers to a network, and remove containers from a network.
+>[DockerNet.io][dockernet] provides developers with the tools needed to visualize and manage a Docker Network.  Developers will have the abaility to view their networks in both a list view and graphical view.  Developers are also able to create new networks, delete current networks, add containers to a network, and remove containers from a network.
 >
 >DockerNet's interface allows users to easily and seemlessly navigate between networks.  This feature proves most useful during the early development of a Docker Network configuration.  
 >
@@ -60,19 +60,20 @@
 > - Add/Remove Containers to Docker Networks
 > - Create/Delete Docker Networks
 >### Tech Stack
->- TypeScripot
+>- TypeScript - 
 >- ES Lint / Prettier - TypeScript Linting Library
 >- Jest - Testing Framework
->- HTML5
->- SASS/CSS
+>- HTML5 - 
+>- SASS/CSS - Styling preprocessor
 >- React (Router & Hooks) - Front-end Library
 >- D3 - Data Visualization Library
->- Webpack
->- git/GitHub
->- Docker
->- Bash
+>- Webpack - 
+>- git/GitHub - Version control
+>- Docker - Container manager
+>- Bash - Computer Interface
 >- Node.JS - Package Manager
->- Express 
+>- Express - Server middleware
+---
 ## Getting Started
 
 >### Requirements
@@ -91,6 +92,7 @@
 >1. Navigate to Network
 >1. Add container to Network
 >1. Remove container from Network
+---
 ## Looking Ahead
 >### Roadmap
 > Here's a list of features currently being considered by the development team:
@@ -99,6 +101,7 @@
 >1. Updating Main Display to include all Network/Container information in a single view
 >1. Incorporating Docker Desktop features such as starting and stopping containers 
 
+---
 ## Authors
 >### Creators
 >- Bernie Green [@GitHub][bernie-github] [@LinkedIn][bernie-linkedin]
@@ -115,13 +118,15 @@
 >1. Create your Feature Branch (`git checkout -b feature/NewFeature`)
 >1. Commit your Changes (`git commit -m 'Add some NewFeature'`)
 >1. Push to the Branch on your Fork (`git push origin feature/NewFeature`)
->1. Open a Pull Request from the Branch on your Fork to the master branch on the DockerNet.io Main Branch
+>1. Open a Pull Request from the Branch on your Fork to the master branch on the [DockerNet.io][dockernet] Main Branch
 
+---
 ## Acknowledgements
 >- Huge shoutout to [OSLabs][os-labs] and [CodeSmith][codesmith] for sponsoring the development of this product
 >- Massive thank you to all the kind, considerate internet denizens who provided valuable feedback during the ideation period of this product
 >- Gargantuian thank you each and every individual who provided meaningful supp0rt (technical or non-technical) throughout the development of this product
 
+---
 ## License
 >Distributed under the MIT License. See `LICENSE` for more information.
 
@@ -129,6 +134,7 @@
 <!-- Links -->
 [os-labs]: https://opensourcelabs.io
 [codesmith]: https://codesmith.io
+[dockernet]: http://dockernet.io
 [bernie-github]: https://github.com/bgreen280
 [bernie-linkedin]: https://www.linkedin.com/in/bernardjosephgreen/
 [will-github]: https://github.com/wills77
