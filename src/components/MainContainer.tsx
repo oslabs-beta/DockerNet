@@ -6,6 +6,7 @@ import './mainContainer.scss';
 import { DefaultDisplay } from './DefaultDisplay';
 import { Header } from './Header';
 import { DeleteNetworkModal } from './DeleteNetworkModal';
+import { ErrorModal } from './ErrorModal';
 
 // array of network objects
 interface IState {
@@ -20,13 +21,24 @@ export const MainContainer = () => {
   const [networks, setNetworks] = useState<IState['networks']>([]);
   const [deleteNetworkModalDisplay, setDeleteNetworkModalDislay] =
     useState<boolean>(false);
+  const [errorModalDisplay, setErrorModalDisplay] = useState(false);
   const [networkToDelete, setNetworkToDelete] = useState<string>('');
 
   const getNetworks = () => {
     fetch('/api/networks')
-      .then((res) => res.json())
+      .then((res) => {
+        // Fetch API does not catch 400 status codes
+        if (!res.ok) {
+          throw new Error('Docker Unresponsive');
+        }
+        return res.json();
+      })
       .then((networks) => {
+        setErrorModalDisplay(false);
         setNetworks(networks);
+      })
+      .catch(() => {
+        setErrorModalDisplay(true);
       });
   };
 
@@ -74,6 +86,7 @@ export const MainContainer = () => {
             networks={networks}
           />
         ) : null}
+        {errorModalDisplay ? <ErrorModal /> : null}
       </div>
     </div>
   );

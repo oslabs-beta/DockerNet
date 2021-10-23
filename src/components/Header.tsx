@@ -12,7 +12,7 @@ export const Header = () => {
       </button>
       <div className="header-title">
         <img
-          alt="hello"
+          alt="anchor-logo"
           className="header-logo"
           src="https://pngimg.com/uploads/anchor/anchor_PNG11.png"
         ></img>
