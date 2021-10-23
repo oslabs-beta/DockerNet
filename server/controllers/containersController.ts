@@ -13,25 +13,32 @@ const containersController = (() => {
     res: Response,
     next: NextFunction
   ) => {
-    const { networkName, containerName } = req.body;
+    try {
+      const { networkName, containerName } = req.body;
 
-    // connect container, only checking for error
-    // because default stdout from docker is not
-    // important for our purposes here
-    const { stderr } = await exec(
-      `docker network connect ${networkName} ${containerName}`
-    );
+      // connect container, only checking for error
+      // because default stdout from docker is not
+      // important for our purposes here
+      const { stderr } = await exec(
+        `docker network connect ${networkName} ${containerName}`
+      );
 
-    if (stderr) {
+      if (stderr) {
+        return next({
+          log: 'Docker CLI responsive but throwing error in connect container middleware',
+          message: stderr,
+        });
+      }
+
+      res.locals.networkName = networkName;
+
+      return next();
+    } catch (error) {
       return next({
-        log: 'Error in connect container middleware',
-        message: stderr,
+        log: 'Docker CLI unresponsive: Error in connect container middleware',
+        message: error,
       });
     }
-
-    res.locals.networkName = networkName;
-
-    return next();
   };
 
   const disconnectContainer = async (
@@ -39,24 +46,31 @@ const containersController = (() => {
     res: Response,
     next: NextFunction
   ) => {
-    const { networkName, containerName } = req.body;
+    try {
+      const { networkName, containerName } = req.body;
 
-    // disconnect container, only checking error
-    // as what's returned from docker here is not important
-    const { stderr } = await exec(
-      `docker network disconnect ${networkName} ${containerName}`
-    );
+      // disconnect container, only checking error
+      // as what's returned from docker here is not important
+      const { stderr } = await exec(
+        `docker network disconnect ${networkName} ${containerName}`
+      );
 
-    if (stderr) {
+      if (stderr) {
+        return next({
+          log: 'Docker CLI responsive but throwing error in disconnect container middlewar',
+          message: stderr,
+        });
+      }
+
+      res.locals.networkName = networkName;
+
+      return next();
+    } catch (error) {
       return next({
-        log: 'Error in disconnect container middlewar',
-        message: stderr,
+        log: 'Docker CLI unresponsive: error in disconnect container middlewar',
+        message: error,
       });
     }
-
-    res.locals.networkName = networkName;
-
-    return next();
   };
 
   return {
