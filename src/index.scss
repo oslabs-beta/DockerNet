@@ -1,0 +1,14 @@
+$displayBackgroundColor: #f0efef;
+
+html,
+body {
+  background-color: $displayBackgroundColor;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  height: calc(100vh - 4rem);
+}

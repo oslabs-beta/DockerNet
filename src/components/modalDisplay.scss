@@ -9,7 +9,6 @@
 }
 
 .deleteModalDisplay {
-  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -19,18 +18,15 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
   border-radius: 20px;
 }
 
 .deleteModalDisplay h1 {
   border: none;
-  //   color: blue;
   font-size: 15px;
 }
 
 .deleteModalButtons {
   display: flex;
-  //   border: 1px solid purple;
 }
