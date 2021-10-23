@@ -23,6 +23,11 @@ export const MainContainer = () => {
     useState<boolean>(false);
   const [errorModalDisplay, setErrorModalDisplay] = useState(false);
   const [networkToDelete, setNetworkToDelete] = useState<string>('');
+  const [sideNavDisplay, setSideNavDisplay] = useState<boolean>(true);
+
+  const toggleSideNav = () => {
+    setSideNavDisplay(!sideNavDisplay);
+  };
 
   const getNetworks = () => {
     fetch('/api/networks')
@@ -58,15 +63,18 @@ export const MainContainer = () => {
   }, []);
 
   return (
-    <div>
-      <Header />
-      <div className="main-container">
-        <SideNav
-          setNetworks={setNetworks}
-          networks={networks}
-          toggleDeleteNetworkModal={toggleDeleteNetworkModal}
-          setNetworkToBeDeleted={setNetworkToBeDeleted}
-        />
+    <div className="main-wrapper">
+      <Header toggleSideNav={toggleSideNav} />
+      <div className={`main-container ${sideNavDisplay ? '' : 'no-sidenav'}`}>
+        {sideNavDisplay ? (
+          <SideNav
+            setNetworks={setNetworks}
+            networks={networks}
+            toggleDeleteNetworkModal={toggleDeleteNetworkModal}
+            setNetworkToBeDeleted={setNetworkToBeDeleted}
+          />
+        ) : null}
+
         {/* URL param variable set to networkName */}
         <Switch>
           {/* network specific routes */}

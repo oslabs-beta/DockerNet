@@ -19,8 +19,6 @@ export const ListDisplay: React.FC<IProps> = ({
   network,
   setNetworks,
 }) => {
-  // Grab the current State of the Main Displau
-
   const disconnectContainer = (networkName: string, containerName: string) => {
     fetch('/api/containers', {
       method: 'DELETE',
@@ -32,7 +30,6 @@ export const ListDisplay: React.FC<IProps> = ({
     })
       .then((res) => res.json())
       .then((networks) => {
-        console.log(networks);
         setNetworks(networks);
       });
   };
@@ -53,14 +50,12 @@ export const ListDisplay: React.FC<IProps> = ({
   });
 
   return (
-    <>
-      <div className="list-display">
-        <div>Name</div>
-        <div>ID</div>
-        <div>IP Address</div>
-        <div>Remove Container</div>
-        {containerList}
-      </div>
-    </>
+    <div className="list-display">
+      <div>Name</div>
+      <div>ID</div>
+      <div>IP Address</div>
+      <div>Remove Container</div>
+      {containerList}
+    </div>
   );
 };
