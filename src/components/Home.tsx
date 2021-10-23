@@ -1,6 +1,6 @@
-import './defaultDisplay.scss';
+import './home.scss';
 
-export const DefaultDisplay = () => {
+export const Home = () => {
   return (
     <div className="default-display">
       <img

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import './modalDisplay.scss';
+import './modal.scss';
 import { useState } from 'react';
 import uniqid from 'uniqid';
 
@@ -78,10 +78,11 @@ export const ConnectContainerModal: React.FC<IProps> = ({
   }, [] as JSX.Element[]);
 
   return (
-    <div className="deleteModalOverlay">
-      <div className="deleteModalDisplay">
+    <div className="modal-overlay">
+      <div className="modal">
         {`Choose a container to connect to ${networkName}`}
         <select
+          className="modal-select"
           name="containerSelect"
           value={containerToConnectInput}
           onChange={(e) => setContainerToConnectInput(e.target.value)}
@@ -90,11 +91,14 @@ export const ConnectContainerModal: React.FC<IProps> = ({
           {selectOptions}
         </select>
         <button
+          className="modal-button"
           onClick={() => connectContainer(networkName, containerToConnectInput)}
         >
-          Connect Container
+          Connect
         </button>
-        <button onClick={toggleConnectContainerModal}>Cancel</button>
+        <button className="modal-button" onClick={toggleConnectContainerModal}>
+          Cancel
+        </button>
       </div>
     </div>
   );

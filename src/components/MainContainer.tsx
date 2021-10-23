@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 import { MainDisplay } from './MainDisplay';
 import { SideNav } from './SideNav';
 import './mainContainer.scss';
-import { DefaultDisplay } from './DefaultDisplay';
+import { Home } from './Home';
 import { Header } from './Header';
 import { DeleteNetworkModal } from './DeleteNetworkModal';
 import { ErrorModal } from './ErrorModal';
@@ -83,7 +83,7 @@ export const MainContainer = () => {
           </Route>
           {/* default route */}
           <Route exact path="/">
-            <DefaultDisplay></DefaultDisplay>
+            <Home />
           </Route>
         </Switch>
         {deleteNetworkModalDisplay ? (

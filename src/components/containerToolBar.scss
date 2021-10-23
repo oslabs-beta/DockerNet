@@ -1,0 +1,24 @@
+.container-tool-bar {
+  width: 100%;
+}
+
+.tool-bar-buttons {
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.network-info {
+  width: 20rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.network-name {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.driver {
+  font-size: 0.8rem;
+}

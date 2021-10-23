@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { AddNetworkModalDisplay } from './AddNetworkModalDisplay';
+import { AddNetworkMenu } from './AddNetworkMenu';
 import uniqid from 'uniqid';
 import './sideNav.scss';
 
@@ -59,7 +59,7 @@ export const SideNav: React.FC<IProps> = ({
   return (
     <div className="side-nav">
       <div className="networkLinkContainer">{networkLinks}</div>
-      <AddNetworkModalDisplay setNetworks={setNetworks} />
+      <AddNetworkMenu setNetworks={setNetworks} />
     </div>
   );
 };

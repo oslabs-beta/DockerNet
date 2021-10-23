@@ -1,4 +1,4 @@
-import './modalDisplay.scss';
+import './modal.scss';
 
 interface IProps {
   toggleDeleteNetworkModal: () => void;
@@ -36,27 +36,32 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
 
   if (numberOfContainers) {
     return (
-      <div className="deleteModalOverlay">
-        <div className="deleteModalDisplay">
+      <div className="modal-overlay">
+        <div className="modal">
           <div>
             {`${numberOfContainers} containers are currently connected to ${networkToDelete}. Please disconnect them before removing the network`}
           </div>
-          <div className="deleteModalButtons">
-            <button onClick={toggleDeleteNetworkModal}>Cancel</button>
-          </div>
+          <button className="modal-button" onClick={toggleDeleteNetworkModal}>
+            Cancel
+          </button>
         </div>
       </div>
     );
   } else {
     return (
-      <div className="deleteModalOverlay">
-        <div className="deleteModalDisplay">
+      <div className="modal-overlay">
+        <div className="modal">
           <div>{`Are you sure you want to delete ${networkToDelete}?`}</div>
-          <div className="deleteModalButtons">
-            <button onClick={() => deleteNetwork(networkToDelete)}>
+          <div className="modal-buttons">
+            <button
+              className="modal-button"
+              onClick={() => deleteNetwork(networkToDelete)}
+            >
               Delete Network
             </button>
-            <button onClick={toggleDeleteNetworkModal}>Cancel</button>
+            <button className="modal-button" onClick={toggleDeleteNetworkModal}>
+              Cancel
+            </button>
           </div>
         </div>
       </div>

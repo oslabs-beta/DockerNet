@@ -2,7 +2,7 @@ import { useParams, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import './mainDisplay.scss';
 import { ListDisplay } from './ListDisplay';
-import { DataToolBar } from './DataToolBar';
+import { ContainerToolBar } from './ContainerToolBar';
 import { GraphDisplay } from './GraphDisplay';
 import { ConnectContainerModal } from './ConnectContainerModal';
 
@@ -44,9 +44,8 @@ export const MainDisplay: React.FC<IProps> = ({ networks, setNetworks }) => {
 
   return (
     <div className="main-display">
-      <div>{networkName}</div>
-      <div>{`Driver: ${network.driver}`}</div>
-      <DataToolBar
+      <ContainerToolBar
+        network={network}
         setViewType={setViewType}
         toggleConnectContainerModal={toggleConnectContainerModal}
       />
