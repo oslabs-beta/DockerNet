@@ -30,22 +30,21 @@
 > This tool is best used before and/or during the development of a Docker Compose YML file.
 ---
 ## Table of Contents
-- [_About_](##about)
-  - [_Description_](###description)
-  - [_Features_](###features)
-  - [_Tech Stack_](###tech-stack)
-- [_Getting Started_](##getting-started)
-  - [_Requirements_](###requirements)
-  - [_Installation_](###installation)
-  - [_How to Use_](###how-to-use)
-- [_Looking Ahead_](##looking-ahead)
-- [_Authors_](##Authors)
-  - [_Creators_](###creators)
-  - [_Contributors_](###contributors)
-  - [_How to Contribute_](###how-to-contribute)
-- [_Acknowledgements_](##acknowledgements)
-
-- [_License_](##license)
+- [_About_](#about)
+  - [_Description_](#description)
+  - [_Features_](#features)
+  - [_Tech Stack_](#tech-stack)
+- [_Getting Started_](#getting-started)
+  - [_Requirements_](#requirements)
+  - [_Installation_](#installation)
+  - [_How to Use_](#how-to-use)
+- [_Looking Ahead_](#looking-ahead)
+- [_Authors_](#Authors)
+  - [_Creators_](#creators)
+  - [_Contributors_](#contributors)
+  - [_How to Contribute_](#how-to-contribute)
+- [_Acknowledgements_](#acknowledgements)
+- [_License_](#license)
 ---
 ## About
 >### Description
