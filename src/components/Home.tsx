@@ -1,13 +1,19 @@
+import { Nest } from '../utils/Nest';
 import './home.scss';
 
 export const Home = () => {
   return (
-    <div className="default-display">
-      <img
-        alt="thunder"
-        src="https://cdn.freebiesupply.com/logos/large/2x/thunderdome-1-logo-png-transparent.png"
-      ></img>
-      <p>Welcome to the ThunderDome!</p>
+    <div className="home">
+      <Nest
+        depth={10}
+        size={20}
+        speed={60}
+        scale={0.8}
+        radius={0}
+        squat={1}
+        animation={'spin'}
+      />
+      <p>DockerNet.io</p>
     </div>
   );
 };

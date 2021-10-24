@@ -2,20 +2,17 @@
 container holding network information
 starts from row 2, column 2 and fills remaining space
 */
-.default-display {
-  // grid-column: 2 / 4;
-  // grid-row: 2;
-  // border: 1px solid darkblue;
-  /* height: 100vw; */
-  width: 90vw;
+.home {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-img {
-  height: 25rem;
+.anchor-logo {
+  width: 2.3rem;
+  height: 2.3rem;
 }
 
 p {
