@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { formatDockerJSON } from '../helpers/formatDockerJSON';
 
 import util from 'util';
 
@@ -67,7 +68,36 @@ const containersController = (() => {
       return next();
     } catch (error) {
       return next({
-        log: 'Docker CLI unresponsive: error in disconnect container middlewar',
+        log: 'Docker CLI unresponsive: error in disconnect container middleware',
+        message: error,
+      });
+    }
+  };
+
+  const getRunningContainers = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      // get all running containers and return the info as a list
+      // of objects with ports, name, and id of the contain
+      const { stdout, stderr } = await exec(
+        `docker ps --format '{ "name": "{{ .Names }}"}'`
+      );
+
+      if (stderr) {
+        return next({
+          log: 'Error in get running containers middleware',
+          message: stderr,
+        });
+      }
+
+      res.locals.containers = formatDockerJSON(stdout);
+      return next();
+    } catch (error) {
+      return next({
+        log: 'Docker CLI unresponsive: error in get running containers middleware',
         message: error,
       });
     }
@@ -76,6 +106,7 @@ const containersController = (() => {
   return {
     connectContainer,
     disconnectContainer,
+    getRunningContainers,
   };
 })();
 

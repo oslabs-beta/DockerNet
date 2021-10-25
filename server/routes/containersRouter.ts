@@ -3,6 +3,14 @@ import containersController from '../controllers/containersController';
 import networksController from '../controllers/networksController';
 const router = express.Router();
 
+router.get(
+  '/',
+  containersController.getRunningContainers,
+  (req: Request, res: Response) => {
+    res.status(200).json(res.locals.containers);
+  }
+);
+
 // disconnect container from network
 // return new array of fresh networks/containers
 router.delete(
