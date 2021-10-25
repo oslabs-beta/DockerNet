@@ -31,6 +31,7 @@ export const Nest: React.FC<IProps> = ({
     backgroundColor: 'white',
     borderRadius: `${radius}%`,
     transition: 'border-radius 1s, width 1s, height 1s',
+    position: 'fixed',
     zIndex: 2,
   };
 
