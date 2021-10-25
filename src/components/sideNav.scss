@@ -8,6 +8,8 @@
   background-color: colors.$primary;
   width: 20rem;
   justify-content: space-between;
+  box-shadow: 6px 6px 12px #d3d3d3, -6px -6px 12px #ededed;
+  clip-path: inset(0px -15px 0px 0px);
 
   i {
     font-size: 1.2rem;
