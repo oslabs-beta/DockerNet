@@ -50,9 +50,9 @@ export const ListDisplay: React.FC<IProps> = ({
 
   return (
     <div className="list-display">
-      <div>Name</div>
-      <div>ID</div>
-      <div>IP Address</div>
+      <div className="column-header">Name</div>
+      <div className="column-header">ID</div>
+      <div className="column-header">IP Address</div>
       <div></div>
       {containerList}
     </div>

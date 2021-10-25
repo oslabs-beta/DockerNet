@@ -21,19 +21,26 @@ export const ContainerToolBar: React.FC<IProps> = ({
         <div className="driver">Driver: {network.driver}</div>
       </div>
       <div className="tool-bar-buttons">
+        <div className="view-buttons">
+          <button
+            className="viewToggleButton"
+            onClick={() => setViewType('list')}
+          >
+            List{' '}
+          </button>
+          <button
+            className="viewToggleButton"
+            onClick={() => setViewType('graph')}
+          >
+            Graph{' '}
+          </button>
+        </div>
         <button
-          className="viewToggleButton"
-          onClick={() => setViewType('list')}
+          className="connect-container-display-button"
+          onClick={toggleConnectContainerModal}
         >
-          List{' '}
+          Connect Container
         </button>
-        <button
-          className="viewToggleButton"
-          onClick={() => setViewType('graph')}
-        >
-          Graph{' '}
-        </button>
-        <button onClick={toggleConnectContainerModal}>Connect Container</button>
       </div>
     </div>
   );

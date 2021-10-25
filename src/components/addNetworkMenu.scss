@@ -1,28 +1,30 @@
 @use '../utils/colors';
 
-.addModalDisplay {
+.add-network-menu {
   display: flex;
   flex-direction: column;
+  h1 {
+    color: colors.$soft-white;
+  }
 }
 
-.addModalDisplay h1 {
-  color: colors.$soft-white;
-}
-
-.addNetworkButton {
+.add-network-display-button {
   background-color: colors.$secondary;
   padding: 5px;
   color: colors.$soft-white;
 }
 
-button {
-  border: none;
-  background-color: transparent;
-  color: colors.$soft-white;
-  padding-bottom: 8px;
-  cursor: pointer;
+.add-network-display-button:hover {
+  background-color: colors.$accent;
+  color: black;
 }
 
-button:hover {
-  background-color: colors.$secondary;
+.add-network-button {
+  background-color: colors.$primary;
+  color: colors.$soft-white;
+}
+
+.add-network-button:hover {
+  background-color: colors.$accent;
+  color: black;
 }

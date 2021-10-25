@@ -1,3 +1,4 @@
+@use '../utils/colors.scss';
 .modal {
   display: flex;
   flex-direction: column;
@@ -10,6 +11,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
+
+  button {
+    background-color: colors.$primary;
+    border: none;
+    color: colors.$soft-white;
+    padding: 0.4rem;
+  }
+
+  button:hover {
+    background-color: colors.$secondary;
+  }
 }
 
 .modal-overlay {

@@ -8,9 +8,22 @@
   background-color: colors.$primary;
   width: 20rem;
   justify-content: space-between;
+  box-shadow: 6px 6px 12px #d3d3d3, -6px -6px 12px #ededed;
+  clip-path: inset(0px -15px 0px 0px);
+
+  i {
+    font-size: 1.2rem;
+  }
+
+  button {
+    border: none;
+    color: colors.$soft-white;
+    padding-bottom: 8px;
+    cursor: pointer;
+  }
 }
 
-.networkDisplay {
+.network-display {
   display: flex;
   justify-content: space-between;
   padding: 20px;
@@ -18,11 +31,21 @@
   background-color: colors.$primary;
 }
 
-.networkDisplay:hover {
+.network-display:hover {
   background-color: colors.$accent;
+  a {
+    color: black;
+  }
+  i {
+    color: black;
+  }
 }
 
-.networkLink {
+.network-link {
   color: colors.$soft-white;
   text-decoration: none;
+}
+
+.delete-network-button {
+  background-color: transparent;
 }
