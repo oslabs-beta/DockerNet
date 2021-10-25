@@ -134,6 +134,7 @@
 [os-labs]: https://opensourcelabs.io
 [codesmith]: https://codesmith.io
 [dockernet]: http://dockernet.io
+[dockernet-linkedin]: https://www.linkedin.com/company/dockernet/about/
 [bernie-github]: https://github.com/bgreen280
 [bernie-linkedin]: https://www.linkedin.com/in/bernardjosephgreen/
 [will-github]: https://github.com/wills77
