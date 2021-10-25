@@ -1,28 +1,28 @@
-$textColor: #f2f4f3;
-$headerColor: #8161d2;
-$backgroundColor: #0c0227;
+@use '../utils/colors';
 
 .addModalDisplay {
   display: flex;
   flex-direction: column;
 }
 
-h1 {
-  color: $textColor;
+.addModalDisplay h1 {
+  color: colors.$soft-white;
 }
 
 .addNetworkButton {
-  border: 1px solid $headerColor;
-  background-color: $headerColor;
+  background-color: colors.$secondary;
   padding: 5px;
-  color: $textColor;
+  color: colors.$soft-white;
 }
 
 button {
-  border: 1px solid $backgroundColor;
-  background-color: $backgroundColor;
-  // padding: 5px;
-  color: $textColor;
+  border: none;
+  background-color: transparent;
+  color: colors.$soft-white;
   padding-bottom: 8px;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: colors.$secondary;
 }
