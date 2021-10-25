@@ -1,15 +1,12 @@
-$headerColor: #8161d2;
-/* 
-header stretches across whole page heading
-*/
+@use '../utils/colors.scss';
+
 .header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 4rem;
   align-items: center;
-  outline: 1px solid $headerColor;
-  background-color: $headerColor;
+  background-color: colors.$secondary;
 }
 
 .header-button {
@@ -22,13 +19,13 @@ header stretches across whole page heading
 .menuIcon {
   width: 35px;
   height: 3px;
-  background-color: white;
+  background-color: #f2f4f3;
   margin: 6px;
 }
 
 .header-title {
   margin-right: 2rem;
-  color: white;
+  color: colors.$soft-white;
   font-size: 20px;
   display: flex;
   justify-content: center;

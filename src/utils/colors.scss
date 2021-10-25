@@ -1,0 +1,9 @@
+$primary: #0c0227;
+$secondary: #8161d2;
+$accent: #19044e;
+$soft-white: #f2f4f3;
+
+// animation box-shadows
+$black-shadow: 5px 5px 16px #5a5a5a, -5px -5px 16px #ffffff;
+$light-shadow: 5px -5px 20px $secondary, -5px 5px 20px $primary;
+$dark-shadow: 5px -5px 20px $primary, -5px 5px 20px $secondary;

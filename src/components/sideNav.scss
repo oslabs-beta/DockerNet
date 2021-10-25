@@ -1,19 +1,11 @@
-$backgroundColor: #0c0227;
-$backgroundColorHover: #19044e;
-$textColor: #f2f4f3;
-$textColorHover: #e9eceb;
+@use '../utils/colors';
 
-/* 
-side navigation bar
-position in first column on left-most side of page
-begins after header row
-*/
 .side-nav {
   display: none;
   grid-column: 1;
   display: flex;
   flex-direction: column;
-  background-color: $backgroundColor;
+  background-color: colors.$primary;
   width: 20rem;
   justify-content: space-between;
 }
@@ -23,18 +15,14 @@ begins after header row
   justify-content: space-between;
   padding: 20px;
   height: 3vh;
-  background-color: $backgroundColor;
+  background-color: colors.$primary;
 }
 
 .networkDisplay:hover {
-  background-color: $backgroundColorHover;
-}
-
-.networkDisplay:hover .networkLink {
-  color: $textColorHover;
+  background-color: colors.$accent;
 }
 
 .networkLink {
-  color: $textColor;
+  color: colors.$soft-white;
   text-decoration: none;
 }
