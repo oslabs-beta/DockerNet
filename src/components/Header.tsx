@@ -18,7 +18,7 @@ export const Header: React.FC<IProps> = ({ toggleSideNav }) => {
         <img
           alt="anchor-logo"
           className="header-logo"
-          src="https://pngimg.com/uploads/anchor/anchor_PNG11.png"
+          src="http://localhost:3000/assets/ship-wheel.png"
         ></img>
         <div>DockerNet</div>
       </div>

@@ -15,6 +15,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.use('/build', express.static(path.join(__dirname, '../build')));
+app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).sendFile(path.join(__dirname, '../build/index.html'));

@@ -1,0 +1,77 @@
+:root {
+  --black-shadow: 5px 5px 16px #5a5a5a, -5px -5px 16px #ffffff;
+  --yellow-shadow: 5px -5px 20px #8161d2c9, -5px 5px 20px #0c0227c6;
+  --green-shadow: -5px -5px 20px rgb(4, 88, 62), 5px 5px 20px rgb(58, 88, 92);
+  --purple-shadow: -5px 5px 20px #0c0227b8, 5px -5px 20px #8161d2;
+}
+
+@keyframes spin {
+  0% {
+    box-shadow: var(--black-shadow);
+  }
+
+  25% {
+    box-shadow: var(--yellow-shadow);
+  }
+
+  75% {
+    box-shadow: var(--purple-shadow);
+  }
+
+  100% {
+    box-shadow: var(--black-shadow);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scan {
+  0% {
+    box-shadow: var(--black-shadow);
+    transform: translate(-15%, -15%);
+  }
+
+  25% {
+    box-shadow: var(--yellow-shadow);
+    transform: translate(15%, -15%);
+  }
+
+  50% {
+    box-shadow: var(--yellow-shadow);
+    transform: translate(15%, 15%);
+  }
+
+  75% {
+    box-shadow: var(--purple-shadow);
+    transform: translate(-15%, 15%);
+  }
+
+  100% {
+    box-shadow: var(--black-shadow);
+    transform: translate(-15%, -15%);
+  }
+}
+
+@keyframes coil {
+  0% {
+    box-shadow: var(--black-shadow);
+  }
+
+  25% {
+    box-shadow: var(--yellow-shadow);
+    transform: translate(-20%, -20%);
+  }
+
+  50% {
+    box-shadow: var(--yellow-shadow);
+    transform: rotate(180deg);
+  }
+
+  75% {
+    box-shadow: var(--purple-shadow);
+    transform: translate(20%, -20%);
+  }
+
+  100% {
+    box-shadow: var(--black-shadow);
+  }
+}
