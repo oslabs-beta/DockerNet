@@ -64,7 +64,6 @@ export const MainDisplay: React.FC<IProps> = ({ networks, setNetworks }) => {
           networkName={networkName}
           toggleConnectContainerModal={toggleConnectContainerModal}
           containers={containers}
-          networks={networks}
           setNetworks={setNetworks}
         />
       ) : null}

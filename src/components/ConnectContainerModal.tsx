@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import './modal.scss';
-import { useState } from 'react';
-import uniqid from 'uniqid';
+import { useState, useEffect } from 'react';
 
 interface IProps {
   networkName: string | undefined;
@@ -11,31 +10,26 @@ interface IProps {
     name: string;
     ipAddress: string;
   }[];
-  networks: {
-    driver: string;
-    name: string;
-    containers: [];
-  }[];
   setNetworks: (networks: []) => void;
 }
 
-type Cache = {
-  [key: string]: boolean;
-};
-
-type Container = {
-  [key: string]: string;
-};
+interface IState {
+  runningContainers: {
+    name: string;
+  }[];
+}
 
 export const ConnectContainerModal: React.FC<IProps> = ({
   networkName,
   toggleConnectContainerModal,
   containers,
-  networks,
   setNetworks,
 }) => {
   const [containerToConnectInput, setContainerToConnectInput] =
     useState<string>('');
+  const [runningContainers, setRunningContainers] = useState<
+    IState['runningContainers']
+  >([]);
 
   const connectContainer = (
     networkName: string | undefined,
@@ -57,25 +51,31 @@ export const ConnectContainerModal: React.FC<IProps> = ({
       });
   };
 
+  const getRunningContainers = () => {
+    fetch('/api/containers')
+      .then((res) => res.json())
+      .then((containers) => {
+        setRunningContainers(containers);
+      });
+  };
+
   const currentContainerNames = containers.map((container) => container.name);
-  // filter out containers already connected to the network the user is currently viewing
-  const containerCache: Cache = {};
-  const selectOptions = networks.reduce((acc, network) => {
-    network.containers.forEach((container: Container) => {
-      if (
-        !currentContainerNames.includes(container.name) &&
-        !containerCache.hasOwnProperty(container.name)
-      ) {
-        containerCache[container.name] = true;
-        acc.push(
-          <option key={uniqid()} value={container.name}>
-            {container.name}{' '}
-          </option>
-        );
-      }
-    });
-    return acc;
-  }, [] as JSX.Element[]);
+
+  useEffect(() => {
+    getRunningContainers();
+  }, []);
+
+  // filter out containers already connected to the network
+  // the user is navigated to
+  const selectOptions = runningContainers.map((container) => {
+    if (!currentContainerNames.includes(container.name)) {
+      return (
+        <option key={container.name} value={container.name}>
+          {container.name}
+        </option>
+      );
+    }
+  });
 
   return (
     <div className="modal-overlay">
