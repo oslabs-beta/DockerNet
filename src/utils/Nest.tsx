@@ -32,7 +32,6 @@ export const Nest: React.FC<IProps> = ({
     borderRadius: `${radius}%`,
     transition: 'border-radius 1s, width 1s, height 1s',
     zIndex: 2,
-    position: 'fixed',
   };
 
   if (depth === 1) {

@@ -4,16 +4,21 @@ import './home.scss';
 export const Home = () => {
   return (
     <div className="home">
-      <Nest
-        depth={10}
-        size={20}
-        speed={60}
-        scale={0.8}
-        radius={0}
-        squat={1}
-        animation={'spin'}
-      />
-      <p>DockerNet.io</p>
+      <div className="welcome">
+        <Nest
+          depth={6}
+          size={20}
+          speed={60}
+          scale={0.8}
+          radius={30}
+          squat={1}
+          animation={'spin'}
+        />
+        <div className="title">
+          <div>DockerNet.io</div>
+          <p>On the left, click on a network to view connected containers.</p>
+        </div>
+      </div>
     </div>
   );
 };
