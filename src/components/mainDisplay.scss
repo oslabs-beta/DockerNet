@@ -5,8 +5,15 @@
   width: 100%;
   max-width: 50rem;
   margin: 0 auto;
-}
 
-.main-display button {
-  background-color: colors.$primary;
+  button {
+    background-color: colors.$primary;
+    border: none;
+    color: colors.$soft-white;
+    padding: 0.4rem;
+  }
+
+  button:hover {
+    background-color: colors.$secondary;
+  }
 }

@@ -36,35 +36,40 @@ export const AddNetworkMenu: React.FC<IProps> = ({ setNetworks }) => {
 
   if (toggleAddModal === true) {
     return (
-      <div>
-        <div className="addModalDisplay">
-          <h1>Add Network</h1>
-          <input
-            type="text"
-            value={networkNameInput}
-            placeholder="Network Name"
-            onChange={(e) => setNetworkNameInput(e.target.value)}
-          ></input>
-          <select
-            name="driverType"
-            placeholder="Driver Type"
-            value={driverTypeInput}
-            onChange={(e) => setDriverTypeInput(e.target.value)}
-          >
-            <option value="null">Select Driver Type</option>
-            <option value="bridge">Bridge</option>
-            <option value="host">Host</option>
-            <option value="none">None</option>
-          </select>
-          <button onClick={addNetwork}>Add</button>
-          <button onClick={toggleAddNetworkModalDisplay}>Cancel</button>
-        </div>
+      <div className="add-network-menu">
+        <h1>Add Network</h1>
+        <input
+          type="text"
+          value={networkNameInput}
+          placeholder="Network Name"
+          onChange={(e) => setNetworkNameInput(e.target.value)}
+        ></input>
+        <select
+          name="driverType"
+          placeholder="Driver Type"
+          value={driverTypeInput}
+          onChange={(e) => setDriverTypeInput(e.target.value)}
+        >
+          <option value="null">Select Driver Type</option>
+          <option value="bridge">Bridge</option>
+          <option value="host">Host</option>
+          <option value="none">None</option>
+        </select>
+        <button className="add-network-button" onClick={addNetwork}>
+          Add
+        </button>
+        <button
+          className="add-network-button"
+          onClick={toggleAddNetworkModalDisplay}
+        >
+          Cancel
+        </button>
       </div>
     );
   } else {
     return (
       <button
-        className="addNetworkButton"
+        className="add-network-display-button"
         onClick={toggleAddNetworkModalDisplay}
       >
         Add Network

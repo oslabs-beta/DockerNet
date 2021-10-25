@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { AddNetworkMenu } from './AddNetworkMenu';
-import uniqid from 'uniqid';
 import './sideNav.scss';
 
 // array of network objects
@@ -31,11 +30,12 @@ export const SideNav: React.FC<IProps> = ({
       network.name !== 'host'
     ) {
       return (
-        <div className="networkDisplay" key={uniqid()}>
-          <Link className="networkLink" to={`/networks/${network.name}`}>
+        <div className="network-display" key={network.name}>
+          <Link className="network-link" to={`/networks/${network.name}`}>
             {network.name}
           </Link>
           <button
+            className="delete-network-button"
             onClick={() => {
               setNetworkToBeDeleted(network.name);
               toggleDeleteNetworkModal();
@@ -47,8 +47,8 @@ export const SideNav: React.FC<IProps> = ({
       );
     } else {
       return (
-        <div className="networkDisplay" key={uniqid()}>
-          <Link className="networkLink" to={`/networks/${network.name}`}>
+        <div className="network-display" key={network.name}>
+          <Link className="network-link" to={`/networks/${network.name}`}>
             {network.name}
           </Link>
         </div>

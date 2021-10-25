@@ -3,9 +3,21 @@
 }
 
 .tool-bar-buttons {
-  width: 15rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+}
+
+.view-buttons {
+  display: flex;
+  width: 6rem;
+  justify-content: space-between;
+}
+
+.connect-container-display-button {
+  width: 7.1rem;
 }
 
 .network-info {
