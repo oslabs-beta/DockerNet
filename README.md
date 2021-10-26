@@ -20,7 +20,16 @@
   <img align="center" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
   <img align="center" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
   <img align="center" alt="Terminal" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />
+  <img align="center" alt="Docker" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png" />
+  <img align="center" alt="NodeJS" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png" />
+  <img align="center" alt="Express" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/express/express.png" />
+  <img align="center" alt="ES-Lint" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/eslint/eslint.png" />
+
+  <!-- 
+  Missing: Jest, D3
+   -->
 </p>
+
 
 <br />
 
@@ -60,17 +69,17 @@
 > - Create/Delete Docker Networks
 >### Tech Stack
 >- ES Lint / Prettier - TypeScript Linting Library
->- Jest - Testing Framework
 >- SASS/CSS - Styling preprocessor
 >- React (Router & Hooks) - Front-end Library
->- D3 - Data Visualization Library
 >- git/GitHub - Version control and Remote Repository Manager
 >- Docker - Container manager
 >- Bash - Command Line Interface
 >- Node.JS - Package Manager
->- Express - Server middleware
+>- Jest - Testing Framework
 >- TypeScript - 
 >- Webpack - 
+>- Express - Server middleware
+>- D3 - Data Visualization Library
 ---
 ## Getting Started
 
@@ -79,10 +88,11 @@
 >1. Active containers
 >1. The Thunderdome 
 >### Installation
->1. Clone Repo to local device
+>1. Clone Repo to local device (`git clone `)
 >1. Install required packages on local device (`npm install`) 
 >1. Open Docker on local device 
 >1. Start app using with the following commands (`npm start`)
+>1. Wait for app to load in default browser
 >
 >### How to Use
 >1. Create Network
