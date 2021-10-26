@@ -11,12 +11,14 @@ interface IProps {
     name: string;
   };
   setNetworks: (networks: []) => void;
+  setErrorModalDisplay: (error: string) => void;
 }
 
 export const ListDisplay: React.FC<IProps> = ({
   containers,
   network,
   setNetworks,
+  setErrorModalDisplay,
 }) => {
   const disconnectContainer = (networkName: string, containerName: string) => {
     fetch('/api/containers', {
@@ -27,9 +29,17 @@ export const ListDisplay: React.FC<IProps> = ({
         containerName: containerName,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failure to disconnect container');
+        }
+        return res.json();
+      })
       .then((networks) => {
         setNetworks(networks);
+      })
+      .catch(() => {
+        setErrorModalDisplay('disconnect-container-error');
       });
   };
 

@@ -21,7 +21,7 @@ export const MainContainer = () => {
   const [networks, setNetworks] = useState<IState['networks']>([]);
   const [deleteNetworkModalDisplay, setDeleteNetworkModalDislay] =
     useState<boolean>(false);
-  const [errorModalDisplay, setErrorModalDisplay] = useState(false);
+  const [errorModalDisplay, setErrorModalDisplay] = useState<string>('');
   const [networkToDelete, setNetworkToDelete] = useState<string>('');
   const [sideNavDisplay, setSideNavDisplay] = useState<boolean>(true);
 
@@ -39,11 +39,15 @@ export const MainContainer = () => {
         return res.json();
       })
       .then((networks) => {
-        setErrorModalDisplay(false);
+        // Keep error modal open if error does not originate
+        // from this fetch
+        if (errorModalDisplay === 'docker-unresponsive') {
+          setErrorModalDisplay('');
+        }
         setNetworks(networks);
       })
       .catch(() => {
-        setErrorModalDisplay(true);
+        setErrorModalDisplay('docker-unresponsive');
       });
   };
 
@@ -72,6 +76,7 @@ export const MainContainer = () => {
             networks={networks}
             toggleDeleteNetworkModal={toggleDeleteNetworkModal}
             setNetworkToBeDeleted={setNetworkToBeDeleted}
+            setErrorModalDisplay={setErrorModalDisplay}
           />
         ) : null}
 
@@ -79,7 +84,11 @@ export const MainContainer = () => {
         <Switch>
           {/* network specific routes */}
           <Route exact path="/networks/:networkName">
-            <MainDisplay networks={networks} setNetworks={setNetworks} />
+            <MainDisplay
+              networks={networks}
+              setNetworks={setNetworks}
+              setErrorModalDisplay={setErrorModalDisplay}
+            />
           </Route>
           {/* default route */}
           <Route exact path="/">
@@ -92,9 +101,15 @@ export const MainContainer = () => {
             networkToDelete={networkToDelete}
             setNetworks={setNetworks}
             networks={networks}
+            setErrorModalDisplay={setErrorModalDisplay}
           />
         ) : null}
-        {errorModalDisplay ? <ErrorModal /> : null}
+        {errorModalDisplay ? (
+          <ErrorModal
+            setErrorModalDisplay={setErrorModalDisplay}
+            error={errorModalDisplay}
+          />
+        ) : null}
       </div>
     </div>
   );

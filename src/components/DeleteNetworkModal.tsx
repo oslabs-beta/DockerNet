@@ -9,6 +9,7 @@ interface IProps {
     name: string;
     containers: [];
   }[];
+  setErrorModalDisplay: (error: string) => void;
 }
 
 export const DeleteNetworkModal: React.FC<IProps> = ({
@@ -16,6 +17,7 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
   networkToDelete,
   setNetworks,
   networks,
+  setErrorModalDisplay,
 }) => {
   const currNetwork = networks.find(
     (network) => network.name === networkToDelete
@@ -25,10 +27,19 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
     fetch(`/api/networks/?networkName=${networkName}`, {
       method: 'DELETE',
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('failure to delete network');
+        }
+        return res.json();
+      })
       .then((networks) => {
         setNetworks(networks);
         toggleDeleteNetworkModal();
+      })
+      .catch(() => {
+        toggleDeleteNetworkModal();
+        setErrorModalDisplay('remove-network-error');
       });
   };
 
