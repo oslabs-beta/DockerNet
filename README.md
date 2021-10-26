@@ -59,19 +59,18 @@
 > - Add/Remove Containers to Docker Networks
 > - Create/Delete Docker Networks
 >### Tech Stack
->- TypeScript - 
 >- ES Lint / Prettier - TypeScript Linting Library
 >- Jest - Testing Framework
->- HTML5 - 
 >- SASS/CSS - Styling preprocessor
 >- React (Router & Hooks) - Front-end Library
 >- D3 - Data Visualization Library
->- Webpack - 
->- git/GitHub - Version control
+>- git/GitHub - Version control and Remote Repository Manager
 >- Docker - Container manager
->- Bash - Computer Interface
+>- Bash - Command Line Interface
 >- Node.JS - Package Manager
 >- Express - Server middleware
+>- TypeScript - 
+>- Webpack - 
 ---
 ## Getting Started
 
@@ -99,6 +98,8 @@
 >1. Updating Data Visualization to provide the same functionality as List Display
 >1. Updating Main Display to include all Network/Container information in a single view
 >1. Incorporating Docker Desktop features such as starting and stopping containers
+>1. Dark Mode
+
 
 ---
 ## Authors
