@@ -14,6 +14,7 @@ interface IProps {
     containers: [];
   }[];
   setNetworks: (networks: []) => void;
+  setErrorModalDisplay: (error: string) => void;
 }
 
 // array of container objects
@@ -21,7 +22,11 @@ interface IState {
   viewType: string;
 }
 
-export const MainDisplay: React.FC<IProps> = ({ networks, setNetworks }) => {
+export const MainDisplay: React.FC<IProps> = ({
+  networks,
+  setNetworks,
+  setErrorModalDisplay,
+}) => {
   const [connectContainerModalDisplay, setConnectContainerModalDisplay] =
     useState<boolean>(false);
 
@@ -55,6 +60,7 @@ export const MainDisplay: React.FC<IProps> = ({ networks, setNetworks }) => {
           containers={containers}
           network={network}
           setNetworks={setNetworks}
+          setErrorModalDisplay={setErrorModalDisplay}
         />
       ) : viewType == 'graph' ? (
         <GraphDisplay containers={containers} network={network} />
@@ -65,6 +71,7 @@ export const MainDisplay: React.FC<IProps> = ({ networks, setNetworks }) => {
           toggleConnectContainerModal={toggleConnectContainerModal}
           containers={containers}
           setNetworks={setNetworks}
+          setErrorModalDisplay={setErrorModalDisplay}
         />
       ) : null}
     </div>

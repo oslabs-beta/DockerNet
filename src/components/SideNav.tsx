@@ -11,6 +11,7 @@ interface IProps {
   setNetworks: (networks: []) => void;
   toggleDeleteNetworkModal: () => void;
   setNetworkToBeDeleted: (networkName: string) => void;
+  setErrorModalDisplay: (error: string) => void;
 }
 
 export const SideNav: React.FC<IProps> = ({
@@ -18,6 +19,7 @@ export const SideNav: React.FC<IProps> = ({
   setNetworks,
   toggleDeleteNetworkModal,
   setNetworkToBeDeleted,
+  setErrorModalDisplay,
 }) => {
   // create link components based on networks, each navigating the user to
   // a URL where the param is the name of the network
@@ -59,7 +61,10 @@ export const SideNav: React.FC<IProps> = ({
   return (
     <div className="side-nav">
       <div className="networkLinkContainer">{networkLinks}</div>
-      <AddNetworkMenu setNetworks={setNetworks} />
+      <AddNetworkMenu
+        setErrorModalDisplay={setErrorModalDisplay}
+        setNetworks={setNetworks}
+      />
     </div>
   );
 };

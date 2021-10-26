@@ -4,9 +4,13 @@ import './addNetworkMenu.scss';
 
 interface IProps {
   setNetworks: (networks: []) => void;
+  setErrorModalDisplay: (error: string) => void;
 }
 
-export const AddNetworkMenu: React.FC<IProps> = ({ setNetworks }) => {
+export const AddNetworkMenu: React.FC<IProps> = ({
+  setNetworks,
+  setErrorModalDisplay,
+}) => {
   const [toggleAddModal, setToggleAddModal] = useState(false);
 
   const [networkNameInput, setNetworkNameInput] = useState('');
@@ -30,11 +34,19 @@ export const AddNetworkMenu: React.FC<IProps> = ({ setNetworks }) => {
         driver: driverTypeInput,
       }),
     })
-      .then((res) => res.json())
-      .then((networks) => setNetworks(networks));
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failure to create network');
+        }
+        return res.json();
+      })
+      .then((networks) => setNetworks(networks))
+      .catch(() => {
+        setErrorModalDisplay('create-network-error');
+      });
   };
 
-  if (toggleAddModal === true) {
+  if (toggleAddModal) {
     return (
       <div className="add-network-menu">
         <h1>Add Network</h1>

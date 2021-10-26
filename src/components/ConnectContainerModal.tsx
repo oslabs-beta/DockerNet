@@ -11,6 +11,7 @@ interface IProps {
     ipAddress: string;
   }[];
   setNetworks: (networks: []) => void;
+  setErrorModalDisplay: (error: string) => void;
 }
 
 interface IState {
@@ -24,6 +25,7 @@ export const ConnectContainerModal: React.FC<IProps> = ({
   toggleConnectContainerModal,
   containers,
   setNetworks,
+  setErrorModalDisplay,
 }) => {
   const [containerToConnectInput, setContainerToConnectInput] =
     useState<string>('');
@@ -44,10 +46,19 @@ export const ConnectContainerModal: React.FC<IProps> = ({
         containerName: containerName,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Error connecting container');
+        }
+        return res.json();
+      })
       .then((networks) => {
         toggleConnectContainerModal();
         setNetworks(networks);
+      })
+      .catch(() => {
+        toggleConnectContainerModal();
+        setErrorModalDisplay('connect-container-error');
       });
   };
 
