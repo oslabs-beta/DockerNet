@@ -7,6 +7,7 @@ import { Home } from './Home';
 import { Header } from './Header';
 import { DeleteNetworkModal } from './DeleteNetworkModal';
 import { ErrorModal } from './ErrorModal';
+import { DockerUnresponsive } from './DockerUnresponsive';
 
 // array of network objects
 interface IState {
@@ -22,6 +23,8 @@ export const MainContainer = () => {
   const [deleteNetworkModalDisplay, setDeleteNetworkModalDislay] =
     useState<boolean>(false);
   const [errorModalDisplay, setErrorModalDisplay] = useState<string>('');
+  const [dockerUnresponsiveModalDisplay, setDockerUnresponsiveModalDisplay] =
+    useState<boolean>(false);
   const [networkToDelete, setNetworkToDelete] = useState<string>('');
   const [sideNavDisplay, setSideNavDisplay] = useState<boolean>(true);
 
@@ -39,15 +42,11 @@ export const MainContainer = () => {
         return res.json();
       })
       .then((networks) => {
-        // Keep error modal open if error does not originate
-        // from this fetch
-        if (errorModalDisplay === 'docker-unresponsive') {
-          setErrorModalDisplay('');
-        }
+        setDockerUnresponsiveModalDisplay(false);
         setNetworks(networks);
       })
       .catch(() => {
-        setErrorModalDisplay('docker-unresponsive');
+        setDockerUnresponsiveModalDisplay(true);
       });
   };
 
@@ -110,6 +109,7 @@ export const MainContainer = () => {
             error={errorModalDisplay}
           />
         ) : null}
+        {dockerUnresponsiveModalDisplay ? <DockerUnresponsive /> : null}
       </div>
     </div>
   );

@@ -18,7 +18,6 @@ router.delete(
   containersController.disconnectContainer,
   networksController.getNetworksAndContainers,
   (req: Request, res: Response) => {
-    console.log('hello from delete to continaers');
     res.status(200).json(res.locals.networksAndContainers);
   }
 );
