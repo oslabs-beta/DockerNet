@@ -11,14 +11,7 @@ export const ErrorModal: React.FC<IProps> = ({
   setErrorModalDisplay,
 }) => {
   let errorModalContent;
-  if (error === 'docker-unresponsive') {
-    errorModalContent = (
-      <>
-        Unable to connect to the Docker daemon. Please make sure Docker is
-        running.
-      </>
-    );
-  } else if (error === 'connect-container-error') {
+  if (error === 'connect-container-error') {
     errorModalContent = (
       <>
         Error connecting container. Please try again.

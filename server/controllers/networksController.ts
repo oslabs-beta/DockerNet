@@ -6,9 +6,6 @@ import { formatNetworksAndContainers } from '../helpers/formatNetworksAndContain
 // make the terminal commands return normal thenable promises
 const exec = util.promisify(child_process.exec);
 
-// const somethingController = {}
-// somethingController.doSomethong = function
-
 // JS Module pattern:
 const networksController = (() => {
   const getNetworksAndContainers = async (
@@ -51,8 +48,6 @@ const networksController = (() => {
     res: Response,
     next: NextFunction
   ) => {
-    // name of network and associated driver
-
     try {
       const { networkName, driver } = req.body;
       // only checking for error as we don't need
