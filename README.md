@@ -25,7 +25,7 @@
 <br />
 
 # DockerNet
-> An easy-to-use, locally-hosted web-app for developers and engineers to visualize and manage their Docker Networks in real-time.  
+> An easy-to-use, locally-hosted web app for developers and engineers to visualize and manage their Docker Networks in real-time.
 >
 > This tool is best used before and/or during the development of a Docker Compose YML file.
 ---
@@ -48,11 +48,11 @@
 ---
 ## About
 >### Description
->[DockerNet.io][dockernet] provides developers with the tools needed to visualize and manage a Docker Network.  Developers will have the abaility to view their networks in both a list view and graphical view.  Developers are also able to create new networks, delete current networks, add containers to a network, and remove containers from a network.
+>[DockerNet.io][dockernet] provides developers with the tools needed to visualize and manage a Docker Network. Developers will have the ability to view their networks in both a list view and graphical view. Developers are also able to create new networks, delete current networks, add containers to a network, and remove containers from a network.
 >
->DockerNet's interface allows users to easily and seemlessly navigate between networks.  This feature proves most useful during the early development of a Docker Network configuration.  
+>DockerNet's interface allows users to easily and seamlessly navigate between networks. This feature proves most useful during the early development of a Docker Network configuration.
 >
->DockerNet is designed to be used by Developers who are new to the "Docker-verse" and appreciate having a visual aid.  It also benefits seasoned developers who are designing a Docker Compose configuration as well as a means of verifiying a Docker compose file is correctly configured and behaving as expected.
+>DockerNet is designed to be used by developers who are new to the "Docker-verse" and appreciate having a visual aid. It also benefits seasoned developers who are designing a Docker Compose configuration as well as a means of verifying a Docker compose file is correctly configured and behaving as expected.
 >
 >### Features
 > - Visualize Docker Networks
@@ -95,10 +95,10 @@
 ## Looking Ahead
 >### Roadmap
 > Here's a list of features currently being considered by the development team:
->1. Updating Data Visualizion to include more robust container and network information
->1. Updating Data Visualizion to provide same functionality as List Display
+>1. Updating Data Visualization to include more robust container and network information
+>1. Updating Data Visualization to provide the same functionality as List Display
 >1. Updating Main Display to include all Network/Container information in a single view
->1. Incorporating Docker Desktop features such as starting and stopping containers 
+>1. Incorporating Docker Desktop features such as starting and stopping containers
 
 ---
 ## Authors
@@ -109,7 +109,7 @@
 >- Wyatt McMurry [@GitHub][wyatt-github] [@LinkedIn][wyatt-linkedin]
 >
 >### Contributors
->- WIll you be the first? See below for instuctions on how to contrivute
+>- Will you be the first? See below for instructions on how to contribute
 >
 >### How to Contribute
 >We love working with other developers in the open-source community! **Here's how to contribute:**
@@ -123,7 +123,7 @@
 ## Acknowledgements
 >- Huge shoutout to [OSLabs][os-labs] and [CodeSmith][codesmith] for sponsoring the development of this product
 >- Massive thank you to all the kind, considerate internet denizens who provided valuable feedback during the ideation period of this product
->- Gargantuian thank you each and every individual who provided meaningful supp0rt (technical or non-technical) throughout the development of this product
+>- Gargantuan thank you to each and every individual who provided meaningful supp0rt (technical or non-technical) throughout the development of this product
 
 ---
 ## License
