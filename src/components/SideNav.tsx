@@ -23,9 +23,9 @@ export const SideNav: React.FC<IProps> = ({
 }) => {
   // create link components based on networks, each navigating the user to
   // a URL where the param is the name of the network
-  // const [sideNavOpen, setSideNavOpen] = useState<boolean>(true);
 
   const networkLinks = networks.map((network) => {
+    // Don't render delete buttons for default Docker networks
     if (
       network.name !== 'bridge' &&
       network.name !== 'none' &&

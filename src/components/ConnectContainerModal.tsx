@@ -27,8 +27,12 @@ export const ConnectContainerModal: React.FC<IProps> = ({
   setNetworks,
   setErrorModalDisplay,
 }) => {
+  // controlled component state for select input
   const [containerToConnectInput, setContainerToConnectInput] =
     useState<string>('');
+
+  // for storing list of currently running containers
+  // these are used to create options for conntect in select input
   const [runningContainers, setRunningContainers] = useState<
     IState['runningContainers']
   >([]);
@@ -64,9 +68,18 @@ export const ConnectContainerModal: React.FC<IProps> = ({
 
   const getRunningContainers = () => {
     fetch('/api/containers')
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failure to get running containers');
+        }
+        return res.json();
+      })
       .then((containers) => {
         setRunningContainers(containers);
+      })
+      .catch(() => {
+        toggleConnectContainerModal();
+        setErrorModalDisplay('get-running-containers-error');
       });
   };
 
@@ -76,8 +89,8 @@ export const ConnectContainerModal: React.FC<IProps> = ({
     getRunningContainers();
   }, []);
 
-  // filter out containers already connected to the network
-  // the user is navigated to
+  // filter out containers already connected to the network:
+  // for preventing attempt to doubly connect a container
   const selectOptions = runningContainers.map((container) => {
     if (!currentContainerNames.includes(container.name)) {
       return (

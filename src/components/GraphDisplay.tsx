@@ -1,7 +1,6 @@
 import ForceGraph2D from 'react-force-graph-2d';
 
 interface IProps {
-  // viewType: 'list' | 'graph' | 'cards';
   containers: {
     id: string;
     name: string;
@@ -18,6 +17,7 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
     containers: { id: string; name: string; ipAddress: string }[],
     networkName: string
   ) => {
+    // Format nodes according react-force-graph API
     const containerNodes = containers.map((container) => {
       return {
         id: container.name,
@@ -26,6 +26,7 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
     });
 
     const nodes = [{ id: networkName, type: 'network' }, ...containerNodes];
+    // Format link objects according to reac-force-graph API
     const links = containers.map((container) => {
       return {
         source: networkName,
@@ -48,6 +49,7 @@ export const GraphDisplay: React.FC<IProps> = ({ containers, network }) => {
         nodeLabel={'id'}
         width={500}
         height={500}
+        // nodes colored by container or network
         nodeAutoColorBy={'type'}
       />
     </div>
