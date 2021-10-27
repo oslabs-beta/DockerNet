@@ -26,6 +26,10 @@ export const AddNetworkMenu: React.FC<IProps> = ({
     if (!networkNameInput || networkNameInput.includes(' ') || !driverTypeInput)
       return;
 
+    setNetworkNameInput('');
+    setDriverTypeInput('');
+    toggleAddNetworkModalDisplay();
+
     fetch('/api/networks', {
       method: 'POST',
       headers: { 'Content-Type': 'Application/JSON' },
@@ -40,7 +44,9 @@ export const AddNetworkMenu: React.FC<IProps> = ({
         }
         return res.json();
       })
-      .then((networks) => setNetworks(networks))
+      .then((networks) => {
+        setNetworks(networks);
+      })
       .catch(() => {
         setErrorModalDisplay('create-network-error');
       });
