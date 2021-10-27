@@ -47,6 +47,7 @@
   - [_Requirements_](#requirements)
   - [_Installation_](#installation)
   - [_How to Use_](#how-to-use)
+  - [_Demo_](#demo)
 - [_Looking Ahead_](#looking-ahead)
 - [_Authors_](#Authors)
   - [_Creators_](#creators)
@@ -93,7 +94,6 @@
 >1. Ensure you have containers running on your local Docker
 >1. Start app using with the following command - `npm start`
 >1. Wait for app to load in your default browser
->
 >### Demo
 >Create Network
 > <p align="center"><img alt="create-network" src="./assets/create-network.gif"></p>
