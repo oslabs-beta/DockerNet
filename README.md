@@ -77,8 +77,8 @@
 >- Bash - Command Line Interface
 >- Node.JS - Package Manager
 >- Jest - Testing Framework
->- TypeScript - 
->- Webpack - 
+>- TypeScript - Strongly typed Programming Language
+>- Webpack - Static module bundler
 >- Express - Server middleware
 >- D3 - Data Visualization Library
 ---
@@ -88,11 +88,12 @@
 >1. Latest version of [Docker][docker]
 >### Installation
 >1. Clone Repo to local device - `git clone https://github.com/oslabs-beta/DockerNet.git`
+>1. Navigate to the DockerNet directory in terminal of chioce
 >1. Install required packages on local device - `npm install`
 >### How to Use
->1. Open Docker on local device 
->1. Ensure you have containers running on your local Docker
->1. Start app using with the following command - `npm start`
+>1. On your local device open Docker and ensure you have containers running
+>1. Navigate to the DockerNet directory in terminal of chioce
+>1. Start app using using the following command - `npm start`
 >1. Wait for app to load in your default browser
 >### Demo
 >Create Network
@@ -105,6 +106,8 @@
 > <p align="center"><img alt="connect-container-to-network" src="./assets/connect-container-to-network.gif"></p>
 >Remove container from Network
 > <p align="center"><img alt="remove-container-from-network" src="./assets/remove-container-from-network.gif"></p>
+>List view and Graph view
+> <p align="center"><img alt="remove-container-from-network" src="./assets/switch-views.gif"></p>
 ---
 ## Looking Ahead
 >### Roadmap
