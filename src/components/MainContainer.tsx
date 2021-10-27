@@ -73,7 +73,7 @@ export const MainContainer = () => {
     // Poll docker for updates to networks/containers
     window.setInterval(() => {
       getNetworks();
-    }, 3000);
+    }, 10000);
   }, []);
 
   return (
