@@ -20,6 +20,7 @@ export const ContainerToolBar: React.FC<IProps> = ({
         <div className="network-name">{network.name}</div>
         <div className="driver">Driver: {network.driver}</div>
       </div>
+      {/* For toggling between list and graph view of containers */}
       <div className="tool-bar-buttons">
         <div className="view-buttons">
           <button
@@ -35,6 +36,7 @@ export const ContainerToolBar: React.FC<IProps> = ({
             Graph{' '}
           </button>
         </div>
+        {/* Opens the modal for connecting a container to the current network */}
         <button
           className="connect-container-display-button"
           onClick={toggleConnectContainerModal}
