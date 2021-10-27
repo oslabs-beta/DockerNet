@@ -5,6 +5,7 @@ export const Home = () => {
   return (
     <div className="home">
       <div className="welcome">
+        {/* home page animation */}
         <Nest
           depth={6}
           size={20}

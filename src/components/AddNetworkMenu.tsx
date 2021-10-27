@@ -19,10 +19,10 @@ export const AddNetworkMenu: React.FC<IProps> = ({
 
   const toggleAddNetworkModalDisplay = () => {
     setToggleAddModal(!toggleAddModal);
-    //console.log({ networks });
   };
 
   const addNetwork = () => {
+    // Prevent empty container names and names with spaces
     if (!networkNameInput || networkNameInput.includes(' ') || !driverTypeInput)
       return;
 

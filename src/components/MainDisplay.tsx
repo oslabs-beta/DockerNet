@@ -30,12 +30,14 @@ export const MainDisplay: React.FC<IProps> = ({
   const [connectContainerModalDisplay, setConnectContainerModalDisplay] =
     useState<boolean>(false);
 
+  // Controls list or graph view of connected containers
   const [viewType, setViewType] = useState<IState['viewType']>('list');
 
   // Grab the name of the current network from URL parameters
   const { networkName } = useParams<{ networkName: string | undefined }>();
-  // Grab the network object associated with that network name
 
+  // Grab the network object associated with above network name for display
+  // of its associated containers
   const network = networks.find((network) => network.name === networkName);
 
   if (network === undefined) {

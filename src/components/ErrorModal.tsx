@@ -10,6 +10,8 @@ export const ErrorModal: React.FC<IProps> = ({
   error,
   setErrorModalDisplay,
 }) => {
+  // Render the appropriate error message depending on the error
+
   let errorModalContent;
   if (error === 'connect-container-error') {
     errorModalContent = (
@@ -39,8 +41,14 @@ export const ErrorModal: React.FC<IProps> = ({
         <button onClick={() => setErrorModalDisplay('')}>Close</button>
       </>
     );
+  } else if (error === 'get-running-containers-error') {
+    errorModalContent = (
+      <>
+        Error getting running containers. Please try again.
+        <button onClick={() => setErrorModalDisplay('')}>Close</button>
+      </>
+    );
   }
-
   return (
     <div className="modal-overlay">
       <div className="modal">

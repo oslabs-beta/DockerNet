@@ -19,6 +19,7 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
   networks,
   setErrorModalDisplay,
 }) => {
+  // Locate the current network in state
   const currNetwork = networks.find(
     (network) => network.name === networkToDelete
   );
@@ -79,26 +80,3 @@ export const DeleteNetworkModal: React.FC<IProps> = ({
     );
   }
 };
-
-// } else if (toggleModal === true && currContainers === 0) {
-//   console.log('hello');
-// }
-// if (currContainers === 0) {
-//   return (
-//     <div className="deleteModalOverlay">
-//       <div className="deleteModalDisplay">
-//         <h1>{`Cannot delete Network when there are containers running`}</h1>
-//         <div className="deleteModalButtons">
-//           <button
-//             onClick={() => {
-//               console.log('HELLO');
-//             }}
-//           >
-//             Yes
-//           </button>
-//           <button onClick={toggleDeleteNetworkModalDisplay}>No</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

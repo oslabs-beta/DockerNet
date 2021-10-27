@@ -19,13 +19,22 @@ interface IState {
 }
 
 export const MainContainer = () => {
+  // contains array of network objects, each with an array of connected containers
   const [networks, setNetworks] = useState<IState['networks']>([]);
+
   const [deleteNetworkModalDisplay, setDeleteNetworkModalDislay] =
     useState<boolean>(false);
+
+  // For toggling of modal containing all error messages when docker is responsive
   const [errorModalDisplay, setErrorModalDisplay] = useState<string>('');
+
+  // For toggling modal handling error messages when docker is unresponsive
   const [dockerUnresponsiveModalDisplay, setDockerUnresponsiveModalDisplay] =
     useState<boolean>(false);
+
+  // Keep track of network user has chosen to delete, provided to DeleteNetworkModal
   const [networkToDelete, setNetworkToDelete] = useState<string>('');
+
   const [sideNavDisplay, setSideNavDisplay] = useState<boolean>(true);
 
   const toggleSideNav = () => {
@@ -46,6 +55,7 @@ export const MainContainer = () => {
         setNetworks(networks);
       })
       .catch(() => {
+        // Open error modal if docker unresponsive
         setDockerUnresponsiveModalDisplay(true);
       });
   };
@@ -60,6 +70,7 @@ export const MainContainer = () => {
 
   useEffect(() => {
     getNetworks();
+    // Poll docker for updates to networks/containers
     window.setInterval(() => {
       getNetworks();
     }, 3000);
