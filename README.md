@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="256" height="256" src="https://pngimg.com/uploads/anchor/anchor_PNG11.png">
+  <img width="256" height="256" src="./assets/ship-wheel-blue.png">
 </p>
 
 <p align="center">
