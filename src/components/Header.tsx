@@ -1,5 +1,6 @@
 import './header.scss';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/ship-wheel.png';
 interface IProps {
   toggleSideNav: () => void;
 }
@@ -14,11 +15,7 @@ export const Header: React.FC<IProps> = ({ toggleSideNav }) => {
       </button>
       <Link className="homepage-link" to={`/`}>
         <div className="header-title">
-          <img
-            alt="anchor-logo"
-            className="header-logo"
-            src="http://localhost:3000/assets/ship-wheel.png"
-          ></img>
+          <img alt="anchor-logo" className="header-logo" src={logo}></img>
           <div>DockerNet</div>
         </div>
       </Link>
