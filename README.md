@@ -29,7 +29,16 @@
   Missing: Jest, D3
    -->
 </p>
+<br>
+<p align="center">
+  Follow us on
+</p>
 
+<p align="center">
+  <a align="center" href="https://www.linkedin.com/company/dockernet/"> 
+    <img align="center" alt=DockerNet-LinkedIn src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a>
+</p>
 
 <br />
 
@@ -47,6 +56,7 @@
   - [_Requirements_](#requirements)
   - [_Installation_](#installation)
   - [_How to Use_](#how-to-use)
+  - [_Demo_](#demo)
 - [_Looking Ahead_](#looking-ahead)
 - [_Authors_](#Authors)
   - [_Creators_](#creators)
@@ -76,30 +86,42 @@
 >- Bash - Command Line Interface
 >- Node.JS - Package Manager
 >- Jest - Testing Framework
->- TypeScript - 
->- Webpack - 
+>- TypeScript - Strongly typed Programming Language
+>- Webpack - Static module bundler
 >- Express - Server middleware
 >- D3 - Data Visualization Library
 ---
 ## Getting Started
 
 >### Requirements
->1. Docker 
->1. Active containers
->1. The Thunderdome 
+>1. Latest version of [Docker][docker]
 >### Installation
->1. Clone Repo to local device (`git clone `)
->1. Install required packages on local device (`npm install`) 
->1. Open Docker on local device 
->1. Start app using with the following commands (`npm start`)
->1. Wait for app to load in default browser
+>1. Clone Repo to local device - `git clone https://github.com/oslabs-beta/DockerNet.git`
+>1. Navigate to the DockerNet directory in terminal of chioce
+>1. Install required packages on local device - `npm install`
+>1. In the root directory rename `.env.example` file to `.env`
 >
+>_*Note:*_ 
+>- Frontend and Server Ports are defaulted to 8081 and 3031, respectively 
+>- These can be updated in the `.env` file found in the root directory
 >### How to Use
->1. Create Network
->1. Delete Network
->1. Navigate to Network
->1. Add container to Network
->1. Remove container from Network
+>1. On your local device open Docker and ensure you have containers running
+>1. Navigate to the DockerNet directory in terminal of chioce
+>1. Start app using using the following command - `npm start`
+>1. Wait for app to load in your default browser
+>### Demo
+>Create Network
+> <p align="center"><img alt="create-network" src="./assets/create-network.gif"></p>
+>Delete Network
+> <p align="center"><img alt="delete-network" src="./assets/delete-network.gif"></p>
+>Navigate to Network
+> <p align="center"><img alt="navigate-to-network" src="./assets/navigate-to-network.gif"></p>
+>Add container to Network
+> <p align="center"><img alt="connect-container-to-network" src="./assets/connect-container-to-network.gif"></p>
+>Remove container from Network
+> <p align="center"><img alt="remove-container-from-network" src="./assets/remove-container-from-network.gif"></p>
+>List view and Graph view
+> <p align="center"><img alt="remove-container-from-network" src="./assets/switch-views.gif"></p>
 ---
 ## Looking Ahead
 >### Roadmap
@@ -135,6 +157,10 @@
 >- Huge shoutout to [OSLabs][os-labs] and [CodeSmith][codesmith] for sponsoring the development of this product
 >- Massive thank you to all the kind, considerate internet denizens who provided valuable feedback during the ideation period of this product
 >- Gargantuan thank you to each and every individual who provided meaningful supp0rt (technical or non-technical) throughout the development of this product
+>- Suporting Libraries:
+>   - [React Forece Graph][react-force-graph] - Graph data visualization library
+>   - [TS-Node][ts-node] - TypeScript execution engine and REPL for Node.js
+>   - [basdges-4-readme][badges-4-readme] - Badges for readme profile
 
 ---
 ## License
@@ -154,3 +180,7 @@
 [nathan-linkedin]: https://www.linkedin.com/in/nathan-yang-76a35a14a/
 [wyatt-github]: https://github.com/Dubya-Mick
 [wyatt-linkedin]: https://www.linkedin.com/in/wyatt-mcmurry/
+[ts-node]: https://github.com/TypeStrong/ts-node
+[react-force-graph]: https://vasturiano.github.io/react-force-graph/
+[docker]: https://www.docker.com/
+[badges-4-readme]: https://github.com/alexandresanlim/Badges4-README.md-Profile
