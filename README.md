@@ -155,6 +155,7 @@
 >- Suporting Libraries:
 >   - [React Forece Graph][react-force-graph] - Graph data visualization library
 >   - [TS-Node][ts-node] - TypeScript execution engine and REPL for Node.js
+>   - [basdges-4-readme][badges-4-readme] - Badges for readme profile
 
 ---
 ## License
@@ -177,3 +178,4 @@
 [ts-node]: https://github.com/TypeStrong/ts-node
 [react-force-graph]: https://vasturiano.github.io/react-force-graph/
 [docker]: https://www.docker.com/
+[badges-4-readme]: https://github.com/alexandresanlim/Badges4-README.md-Profile
