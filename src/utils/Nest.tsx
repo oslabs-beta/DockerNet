@@ -1,4 +1,5 @@
 import './nest.scss';
+import logo from '../../assets/ship-wheel.png';
 
 interface IProps {
   depth: number;
@@ -37,11 +38,7 @@ export const Nest: React.FC<IProps> = ({
   if (depth === 1) {
     return (
       <div style={style}>
-        <img
-          alt="anchor-logo"
-          className="anchor-logo"
-          src="http://localhost:3000/assets/ship-wheel.png"
-        ></img>
+        <img alt="anchor-logo" className="anchor-logo" src={logo}></img>
       </div>
     );
   }

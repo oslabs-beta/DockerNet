@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -20,10 +21,10 @@ module.exports = {
       publicPath: '/',
       directory: path.resolve(__dirname, 'build'),
     },
-    port: 8080,
+    port: process.env.FRONTEND_PORT,
     proxy: {
-      '/networks': 'http://localhost:3000/',
-      '/api': 'http://localhost:3000/',
+      '/networks': `http://localhost:${process.env.SERVER_PORT}/`,
+      '/api': `http://localhost:${process.env.SERVER_PORT}/`,
     },
   },
 

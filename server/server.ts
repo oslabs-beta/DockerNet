@@ -7,10 +7,11 @@ import express, {
 import networksRouter from './routes/networksRouter';
 import containersRouter from './routes/containersRouter';
 import path from 'path';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const app: Application = express();
-
-const PORT = 3000;
 
 app.use(express.json());
 
@@ -50,6 +51,6 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`Server running on port ${process.env.SERVER_PORT}`);
 });
