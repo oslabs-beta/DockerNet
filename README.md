@@ -99,6 +99,11 @@
 >1. Clone Repo to local device - `git clone https://github.com/oslabs-beta/DockerNet.git`
 >1. Navigate to the DockerNet directory in terminal of chioce
 >1. Install required packages on local device - `npm install`
+>1. In the root directory rename `.env.example` file to `.env`
+>
+>_*Note:*_ 
+>- Frontend and Server Ports are defaulted to 8081 and 3031, respectively 
+>- These can be updated in the `.env` file found in the root directory
 >### How to Use
 >1. On your local device open Docker and ensure you have containers running
 >1. Navigate to the DockerNet directory in terminal of chioce
