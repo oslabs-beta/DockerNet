@@ -29,7 +29,16 @@
   Missing: Jest, D3
    -->
 </p>
+<br>
+<p align="center">
+  Follow us on
+</p>
 
+<p align="center">
+  <a align="center" href="https://www.linkedin.com/company/dockernet/"> 
+    <img align="center" alt=DockerNet-LinkedIn src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a>
+</p>
 
 <br />
 
