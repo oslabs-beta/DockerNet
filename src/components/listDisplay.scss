@@ -1,0 +1,17 @@
+.list-display {
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  row-gap: 1rem;
+  align-items: center;
+  max-width: 50rem;
+}
+
+.column-header {
+  font-weight: 500;
+}
+
+.container-list-item {
+  max-width: 15rem;
+  text-overflow: wrap;
+}

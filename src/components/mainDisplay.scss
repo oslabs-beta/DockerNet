@@ -1,0 +1,19 @@
+@use '../utils/colors.scss';
+
+.main-display {
+  padding: 1rem;
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+
+  button {
+    background-color: colors.$primary;
+    border: none;
+    color: colors.$soft-white;
+    padding: 0.4rem;
+  }
+
+  button:hover {
+    background-color: colors.$secondary;
+  }
+}

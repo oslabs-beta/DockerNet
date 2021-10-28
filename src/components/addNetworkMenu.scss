@@ -1,0 +1,30 @@
+@use '../utils/colors';
+
+.add-network-menu {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    color: colors.$soft-white;
+  }
+}
+
+.add-network-display-button {
+  background-color: colors.$secondary;
+  padding: 5px;
+  color: colors.$soft-white;
+}
+
+.add-network-display-button:hover {
+  background-color: colors.$accent;
+  color: black;
+}
+
+.add-network-button {
+  background-color: colors.$primary;
+  color: colors.$soft-white;
+}
+
+.add-network-button:hover {
+  background-color: colors.$accent;
+  color: black;
+}

@@ -1,0 +1,15 @@
+@use './utils/colors.scss';
+
+html,
+body {
+  background-color: colors.$soft-white;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+#root {
+  height: calc(100vh - 4rem);
+}

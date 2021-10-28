@@ -1,0 +1,20 @@
+@use './colors.scss';
+
+@keyframes spin {
+  0% {
+    box-shadow: colors.$black-shadow;
+  }
+
+  25% {
+    box-shadow: colors.$light-shadow;
+  }
+
+  75% {
+    box-shadow: colors.$dark-shadow;
+  }
+
+  100% {
+    box-shadow: colors.$black-shadow;
+    transform: rotate(360deg);
+  }
+}
