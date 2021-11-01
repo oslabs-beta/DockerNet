@@ -156,7 +156,7 @@
 ## Acknowledgements
 >- Huge shoutout to [OSLabs][os-labs] and [CodeSmith][codesmith] for sponsoring the development of this product
 >- Massive thank you to all the kind, considerate internet denizens who provided valuable feedback during the ideation period of this product
->- Gargantuan thank you to each and every individual who provided meaningful supprt (technical or non-technical) throughout the development of this product
+>- Gargantuan thank you to each and every individual who provided meaningful support (technical or non-technical) throughout the development of this product
 >- Suporting Libraries:
 >   - [React Forece Graph][react-force-graph] - Graph data visualization library
 >   - [TS-Node][ts-node] - TypeScript execution engine and REPL for Node.js
