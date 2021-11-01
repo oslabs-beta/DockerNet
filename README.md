@@ -160,7 +160,7 @@
 >- Suporting Libraries:
 >   - [React Forece Graph][react-force-graph] - Graph data visualization library
 >   - [TS-Node][ts-node] - TypeScript execution engine and REPL for Node.js
->   - [basdges-4-readme][badges-4-readme] - Badges for readme profile
+>   - [badges-4-readme][badges-4-readme] - Badges for readme profile
 
 ---
 ## License
