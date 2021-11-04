@@ -72,7 +72,6 @@ export const MainContainer = () => {
         setDockerUnresponsiveModalDisplay(false);
         // cache network data in cookie
         // only re-render when data is fresh
-
         const networkCache = JSON.stringify(networks);
         if (networkCache !== getCache('networkCache')) {
           document.cookie = 'networkCache=' + networkCache;

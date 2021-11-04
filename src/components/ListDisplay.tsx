@@ -1,3 +1,4 @@
+import React from 'react';
 import './listDisplay.scss';
 
 interface IProps {
@@ -45,7 +46,7 @@ export const ListDisplay: React.FC<IProps> = ({
 
   const containerList = containers.map((container) => {
     return (
-      <>
+      <React.Fragment key={container.id}>
         <div className="container-list-item">{`${container.name}`}</div>
         <div className="container-list-item">{`${container.id}`}</div>
         <div className="container-list-item">{`${container.ipAddress}`}</div>
@@ -54,7 +55,7 @@ export const ListDisplay: React.FC<IProps> = ({
         >
           Disconnect
         </button>
-      </>
+      </React.Fragment>
     );
   });
 
