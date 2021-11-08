@@ -41,6 +41,24 @@ export const MainContainer = () => {
     setSideNavDisplay(!sideNavDisplay);
   };
 
+  const getCache = (name: string) => {
+    const result = document.cookie.match(
+      '(^|[^;]+)\\s*' + name + '\\s*=\\s*([^;]+)'
+    );
+    return result ? result.pop() : '';
+  };
+
+  const deleteCache = (name: string, path: string, domain: string) => {
+    if (getCache(name)) {
+      document.cookie =
+        name +
+        '=' +
+        (path ? ';path=' + path : '') +
+        (domain ? ';domain=' + domain : '') +
+        ';expires=Thu, 01 Jan 1970 00:00:01 GMT';
+    }
+  };
+
   const getNetworks = () => {
     fetch('/api/networks')
       .then((res) => {
@@ -52,7 +70,13 @@ export const MainContainer = () => {
       })
       .then((networks) => {
         setDockerUnresponsiveModalDisplay(false);
-        setNetworks(networks);
+        // cache network data in cookie
+        // only re-render when data is fresh
+        const networkCache = JSON.stringify(networks);
+        if (networkCache !== getCache('networkCache')) {
+          document.cookie = 'networkCache=' + networkCache;
+          setNetworks(networks);
+        }
       })
       .catch(() => {
         // Open error modal if docker unresponsive
@@ -69,11 +93,14 @@ export const MainContainer = () => {
   };
 
   useEffect(() => {
+    // delete cache if it exists on mount
+    deleteCache('networkCache', '/', 'localhost');
+    deleteCache('networkCache', '/networks', 'localhost');
     getNetworks();
     // Poll docker for updates to networks/containers
     window.setInterval(() => {
       getNetworks();
-    }, 10000);
+    }, 3000);
   }, []);
 
   return (
