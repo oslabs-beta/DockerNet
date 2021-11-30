@@ -71,7 +71,7 @@
 >
 >DockerNet's interface allows users to easily and seamlessly navigate between networks. This feature proves most useful during the early development of a Docker Network configuration.
 >
->DockerNet is designed to be used by developers who are new to the "Docker-verse" and appreciate having a visual aid. It also benefits seasoned developers who are designing a Docker Compose configuration as well as a means of verifying  a Docker compose file is correctly configured and behaving as expected.
+>DockerNet is designed to be used by developers who are new to the "Docker-verse" and appreciate having a visual aid. It also benefits seasoned developers who are designing a Docker Compose configuration as well as a means of verifying if a Docker compose file is correctly configured and behaving as expected.
 >
 >### Features
 > - Visualize Docker Networks
